@@ -1,14 +1,14 @@
 {
   "name": "tailhead",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Add components to your apps.",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
   "author": {
     "name": "stabldev",
     "url": "https://x.com/stabldev"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "index.js",
   "scripts": {
