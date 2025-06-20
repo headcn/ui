@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <>
-      <h1>Web</h1>
+      <h1>Docs</h1>
     </>
   );
 }
