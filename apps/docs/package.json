@@ -7,7 +7,9 @@
     "start": "next start ",
     "dev": "next dev -p 3002",
     "lint": "next lint",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
     "next": "^14.2.30",
