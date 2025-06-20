@@ -1,5 +1,5 @@
 {
-  "name": "tailheadui",
+  "name": "headwindui",
   "private": true,
   "scripts": {
     "build": "turbo run build",

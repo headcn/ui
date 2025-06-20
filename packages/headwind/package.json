@@ -1,5 +1,5 @@
 {
-  "name": "tailhead",
+  "name": "headwind",
   "version": "0.0.1",
   "description": "Add components to your apps.",
   "license": "MIT",
@@ -20,6 +20,6 @@
     "ui",
     "tailwind",
     "headless-ui",
-    "tailhead"
+    "headwind"
   ]
 }
