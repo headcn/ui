@@ -1,5 +1,5 @@
 {
-  "name": "headwindui",
+  "name": "headwind-ui",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -10,7 +10,7 @@
     "format:check": "turbo run format:check",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=@acme/docs^... && changeset publish"
+    "release": "turbo run build --filter=www^... && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
