@@ -11,7 +11,7 @@
     "release": "turbo run build --filter=@acme/docs^... && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.29.5",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "turbo": "^2.5.4"
