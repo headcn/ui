@@ -1,25 +1,41 @@
 {
   "name": "headcn",
   "version": "0.0.1",
-  "description": "Add components to your apps.",
-  "license": "MIT",
-  "author": {
-    "name": "stabldev",
-    "url": "https://x.com/stabldev"
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
   },
-  "publishConfig": {
-    "access": "public"
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "outputPath": "packages/headcn/dist",
+          "main": "packages/headcn/src/index.ts",
+          "tsConfig": "packages/headcn/tsconfig.lib.json",
+          "format": [
+            "esm"
+          ],
+          "declarationRootDir": "packages/headcn/src"
+        }
+      }
+    }
   },
-  "main": "index.js",
-  "scripts": {
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
-  },
-  "keywords": [
-    "components",
-    "ui",
-    "tailwind",
-    "headless-ui",
-    "headwind"
-  ]
+  "dependencies": {}
 }

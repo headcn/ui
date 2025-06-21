@@ -1,26 +1,10 @@
 {
   "name": "www",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "build": "next build",
-    "start": "next start ",
-    "dev": "next dev -p 3002",
-    "lint": "next lint",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next",
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
-  },
   "dependencies": {
-    "next": "^14.2.30",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "typescript": "5.8.3"
+    "next": "~15.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   }
 }

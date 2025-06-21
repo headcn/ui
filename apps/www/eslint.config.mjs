@@ -1,21 +1,23 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { fixupConfigRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import nx from '@nx/eslint-plugin';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import baseConfig from '../../eslint.config.mjs';
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: dirname(fileURLToPath(import.meta.url)),
+  recommendedConfig: js.configs.recommended,
 });
 
-const eslintConfig = [
-  ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript"],
-    rules: {
-      "@next/next/no-duplicate-head": "off",
-    },
-  }),
+export default [
+  ...fixupConfigRules(compat.extends('next')),
+  ...fixupConfigRules(compat.extends('next/core-web-vitals')),
+  ...baseConfig,
+  ...nx.configs['flat/react-typescript'],
+  {
+    ignores: ['.next/**/*'],
+  },
 ];
-
-export default eslintConfig;

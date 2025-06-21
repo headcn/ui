@@ -1,1 +1,1 @@
-console.log('headwind');
+export * from './lib/headcn.js';
