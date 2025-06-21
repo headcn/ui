@@ -4,7 +4,8 @@
   "description": "Add components to your apps.",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "author": {
     "name": "stabldev",
