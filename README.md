@@ -1,3 +1,3 @@
 # headcn/ui
 
-A sleek **Tailwind** + **Headless UI** component library and CLI. Quickly add accessible, customizable components to your Next.js or React projects — so you can focus on building, not boilerplate.
+Beautiful, accessible components built with **Tailwind CSS** and **Headless UI** - and a CLI to add them to your React projects. Spend less time on boilerplate, and more time building.
