@@ -8,14 +8,16 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "release": "pnpm release:version && pnpm release:publish",
-    "release:publish": "pnpm build --filter=headcn && changeset publish",
-    "release:version": "changeset version"
+    "release:publish": "turbo run build --filter=headcn && changeset publish",
+    "release:version": "changeset version",
+    "www:dev": "turbo run dev --filter=www",
+    "www:build": "turbo run build --filter=www"
   },
   "packageManager": "pnpm@8.15.6",
   "devDependencies": {
