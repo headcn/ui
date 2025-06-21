@@ -14,8 +14,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... && changeset publish",
-    "preview-storybook": "turbo run preview-storybook"
+    "release": "turbo run build --filter=docs^... && changeset publish"
   },
   "packageManager": "pnpm@8.15.6",
   "devDependencies": {

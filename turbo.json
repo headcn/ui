@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**", "storybook-static/**"],
+      "outputs": ["dist/**"],
       "dependsOn": ["^build"]
     },
     "lint": {
@@ -14,12 +14,6 @@
       "persistent": true
     },
     "clean": {
-      "cache": false
-    },
-    "preview-storybook": {
-      "dependsOn": [
-        "^build"
-      ],
       "cache": false
     }
   }
