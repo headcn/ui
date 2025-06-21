@@ -1,5 +1,5 @@
 {
-  "name": "headwind-ui",
+  "name": "ui",
   "private": true,
   "scripts": {
     "build": "turbo run build",
