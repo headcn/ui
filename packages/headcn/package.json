@@ -1,0 +1,32 @@
+{
+  "name": "headcn",
+  "version": "0.0.1",
+  "description": "Add components to your apps.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "stabldev",
+    "url": "https://x.com/stabldev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/headcn/ui.git",
+    "directory": "packages/headcn"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "components",
+    "ui",
+    "tailwind",
+    "headless-ui",
+    "headcn"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
