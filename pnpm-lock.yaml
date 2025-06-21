@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.27.1
+        specifier: ^2.27.2
         version: 2.27.2
       prettier:
         specifier: ^3.2.5
