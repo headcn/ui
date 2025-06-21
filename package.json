@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
     "@nx/js": "21.2.1",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
