@@ -9,6 +9,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-primary text-primary-foreground data-hover:bg-primary/90",
+        secondary:
+          "bg-secondary text-secondary-foreground data-hover:bg-secondary/90",
+        destructive:
+          "bg-destructive text-foreground data-hover:bg-destructive/90",
+        outline:
+          "bg-accent/50 text-accent-foreground border data-hover:bg-accent",
+        ghost: "data-hover:bg-accent text-accent-foreground",
+        link: "text-primary data-hover:underline underline-offset-4",
       },
       size: {
         xs: "h-7 px-2.5 text-xs has-[>svg]:px-2",
