@@ -6,6 +6,15 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/public/*": [
+        "./public/*"
+      ]
+    },
     "target": "ES2017",
     "lib": [
       "dom",
