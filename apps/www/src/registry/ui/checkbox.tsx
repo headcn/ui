@@ -1,20 +1,21 @@
-import { cn } from "@/lib/utils";
 import {
-  type CheckboxProps,
   Checkbox as HeadlessCheckbox,
-} from "@headlessui/react";
+  type CheckboxProps,
+} from "@headlessui/react"
+
+import { cn } from "@/lib/utils"
 
 function CheckBox({ className, ...props }: CheckboxProps) {
   return (
     <HeadlessCheckbox
       className={cn(
-        "group size-4 rounded shrink-0 border grid place-items-center bg-accent/50 data-checked:bg-primary",
-        className,
+        "group bg-accent/50 data-checked:bg-primary grid size-4 shrink-0 place-items-center rounded border",
+        className
       )}
       {...props}
     >
       <svg
-        className="stroke-primary-foreground opacity-0 size-[90%] translate-y-0.5 transition-all group-data-checked:opacity-100 group-data-checked:translate-y-0"
+        className="stroke-primary-foreground size-[90%] translate-y-0.5 opacity-0 transition-all group-data-checked:translate-y-0 group-data-checked:opacity-100"
         viewBox="0 0 14 14"
         fill="none"
       >
@@ -26,7 +27,7 @@ function CheckBox({ className, ...props }: CheckboxProps) {
         />
       </svg>
     </HeadlessCheckbox>
-  );
+  )
 }
 
-export { CheckBox };
+export { CheckBox }
