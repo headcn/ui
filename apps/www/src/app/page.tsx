@@ -1,3 +1,11 @@
+import { Button } from "@/registry/ui/button";
+
 export default function Home() {
-  return <h1>Headcn UI</h1>;
+  return (
+    <div className="flex items-center justify-center gap-5 h-dvh w-dvw">
+      <Button>Button</Button>
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </div>
+  );
 }
