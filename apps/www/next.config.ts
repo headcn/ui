@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   // production-only settings
@@ -9,6 +9,6 @@ const nextConfig: NextConfig = {
   // shared
   devIndicators: false,
   basePath: "/ui",
-};
+}
 
-export default nextConfig;
+export default nextConfig
