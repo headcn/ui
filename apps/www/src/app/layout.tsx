@@ -3,7 +3,7 @@ import "./globals.css";
 import { inter } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Headcn UI - Headless UI components, beautifully designed.",
+  title: "headcn/ui - Headless UI components, beautifully designed.",
   description: "Headless UI components, beautifully designed and ready to use.",
 };
 

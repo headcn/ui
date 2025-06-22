@@ -11,7 +11,10 @@ const buttonVariants = cva(
         primary: "bg-primary text-primary-foreground data-hover:bg-primary/90",
       },
       size: {
+        xs: "h-7 px-2.5 text-xs",
+        sm: "h-8 px-3",
         md: "h-9 px-4",
+        lg: "h-10 px-5 text-base",
       },
     },
     defaultVariants: {
