@@ -9,7 +9,7 @@ export default function Home() {
       <Button size={"icon-md"}>
         <CheckCircleIcon className="size-4" />
       </Button>
-      <Button size={"md"} variant={"link"}>
+      <Button size={"md"} disabled>
         <CheckCircleIcon className="size-4" />
         Button
       </Button>
