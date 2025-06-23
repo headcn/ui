@@ -1,4 +1,3 @@
-import { ComponentProps as ReactComponentProps } from "react"
 import {
   Combobox as HeadlessCombobox,
   ComboboxButton as HeadlessComboboxButton,
@@ -9,14 +8,14 @@ import {
 
 import { cn } from "@/lib/utils"
 
-function Combobox(props: ReactComponentProps<typeof HeadlessCombobox>) {
+function Combobox(props: React.ComponentProps<typeof HeadlessCombobox>) {
   return <HeadlessCombobox {...props} />
 }
 
 function ComboboxButton({
   className,
   ...props
-}: ReactComponentProps<typeof HeadlessComboboxButton>) {
+}: React.ComponentProps<typeof HeadlessComboboxButton>) {
   return (
     <HeadlessComboboxButton
       className={cn("group absolute inset-y-0 right-0 px-3", className)}
@@ -28,7 +27,7 @@ function ComboboxButton({
 function ComboboxInput({
   className,
   ...props
-}: ReactComponentProps<typeof HeadlessComboboxInput>) {
+}: React.ComponentProps<typeof HeadlessComboboxInput>) {
   return (
     <HeadlessComboboxInput
       className={cn(
@@ -43,7 +42,7 @@ function ComboboxInput({
 function ComboboxOptions({
   className,
   ...props
-}: ReactComponentProps<typeof HeadlessComboboxOptions>) {
+}: React.ComponentProps<typeof HeadlessComboboxOptions>) {
   return (
     <HeadlessComboboxOptions
       className={cn(
@@ -58,7 +57,7 @@ function ComboboxOptions({
 function ComboboxOption({
   className,
   ...props
-}: ReactComponentProps<typeof HeadlessComboboxOption>) {
+}: React.ComponentProps<typeof HeadlessComboboxOption>) {
   return (
     <HeadlessComboboxOption
       className={cn(

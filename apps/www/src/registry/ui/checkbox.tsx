@@ -1,11 +1,11 @@
-import {
-  Checkbox as HeadlessCheckbox,
-  type CheckboxProps,
-} from "@headlessui/react"
+import { Checkbox as HeadlessCheckbox } from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function CheckBox({ className, ...props }: CheckboxProps) {
+function CheckBox({
+  className,
+  ...props
+}: React.ComponentProps<typeof HeadlessCheckbox>) {
   return (
     <HeadlessCheckbox
       className={cn(
