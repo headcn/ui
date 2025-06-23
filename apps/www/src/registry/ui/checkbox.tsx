@@ -9,7 +9,7 @@ function CheckBox({ className, ...props }: CheckboxProps) {
   return (
     <HeadlessCheckbox
       className={cn(
-        "group bg-accent/50 data-checked:bg-primary grid size-4 shrink-0 place-items-center rounded border",
+        "group bg-accent/50 data-checked:bg-primary grid size-4 shrink-0 place-items-center rounded border data-disabled:cursor-not-allowed data-disabled:opacity-50",
         className
       )}
       {...props}
