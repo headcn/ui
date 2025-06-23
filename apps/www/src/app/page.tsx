@@ -48,7 +48,11 @@ export default function Example() {
         </div>
         <ComboboxOptions anchor="bottom" transition>
           {filteredPeople.map((person) => (
-            <ComboboxOption key={person.id} value={person}>
+            <ComboboxOption
+              key={person.id}
+              value={person}
+              disabled={person.id === 1}
+            >
               <span>{person.name}</span>
               <CheckIcon className="fill-muted-foreground invisible size-4 group-data-selected:visible" />
             </ComboboxOption>
