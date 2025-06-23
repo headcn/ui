@@ -1,21 +1,30 @@
-import { Field } from "@/registry/ui/field"
-import { Fieldset } from "@/registry/ui/fieldset"
-import { Input } from "@/registry/ui/input"
-import { Label } from "@/registry/ui/label"
-import { Legend } from "@/registry/ui/legend"
+"use client"
 
-export default function Page() {
+import { useState } from "react"
+
+import { Field } from "@/registry/ui/field"
+import { Label } from "@/registry/ui/label"
+import { Radio, RadioGroup } from "@/registry/ui/radio-group"
+
+const plans = ["Startup", "Business", "Enterprise"]
+
+export default function Example() {
+  const [selected, setSelected] = useState(plans[0])
+
   return (
-    <div className="h-dvh w-100 pt-20">
-      <Fieldset className="bg-muted/50 space-y-3 rounded-xl p-5">
-        <Legend>Shipping details</Legend>
-        <Field>
-          <Label className="text-sm/6 font-medium text-white">
-            Street address
-          </Label>
-          <Input placeholder="Address" />
+    <RadioGroup
+      value={selected}
+      onChange={setSelected}
+      aria-label="Server size"
+    >
+      {plans.map((plan) => (
+        <Field key={plan} className="flex items-center gap-2">
+          <Radio value={plan}>
+            <span className="bg-accent-foreground invisible size-2 rounded-full group-data-checked:visible" />
+          </Radio>
+          <Label>{plan}</Label>
         </Field>
-      </Fieldset>
-    </div>
+      ))}
+    </RadioGroup>
   )
 }
