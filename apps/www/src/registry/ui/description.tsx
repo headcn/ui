@@ -1,13 +1,13 @@
 import {
-  Description as HDescription,
-  DescriptionProps as HDescriptionProps,
+  Description as HeadlessDescription,
+  type DescriptionProps as HeadlessDescriptionProps,
 } from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Description({ className, ...props }: HDescriptionProps) {
+function Description({ className, ...props }: HeadlessDescriptionProps) {
   return (
-    <HDescription
+    <HeadlessDescription
       className={cn(
         "text-muted-foreground text-sm",
         "data-disabled:pointer-events-none data-disabled:opacity-50",

@@ -1,13 +1,13 @@
 import {
-  Legend as HLegend,
-  LegendProps as HLegendProps,
+  Legend as HeadlessLegend,
+  type LegendProps as HeadlessLegendProps,
 } from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Legend({ className, ...props }: HLegendProps) {
+function Legend({ className, ...props }: HeadlessLegendProps) {
   return (
-    <HLegend
+    <HeadlessLegend
       className={cn("text-foreground font-semibold", className)}
       {...props}
     />

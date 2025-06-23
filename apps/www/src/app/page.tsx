@@ -17,7 +17,6 @@ export default function Example() {
       value={selected}
       onChange={setSelected}
       aria-label="Server size"
-      disabled
     >
       {plans.map((plan) => (
         <Field key={plan} className="flex items-baseline gap-2">

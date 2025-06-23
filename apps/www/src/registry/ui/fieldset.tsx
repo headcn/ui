@@ -1,10 +1,10 @@
 import {
-  Fieldset as HFieldset,
-  FieldsetProps as HFieldsetProps,
+  Fieldset as HeadlessFieldset,
+  type FieldsetProps as HeadlessFieldsetProps,
 } from "@headlessui/react"
 
-function Fieldset(props: HFieldsetProps) {
-  return <HFieldset {...props} />
+function Fieldset(props: HeadlessFieldsetProps) {
+  return <HeadlessFieldset {...props} />
 }
 
 export { Fieldset }

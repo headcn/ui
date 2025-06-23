@@ -1,10 +1,13 @@
-import { Label as HLabel, LabelProps as HLabelProps } from "@headlessui/react"
+import {
+  Label as HeadlessLabel,
+  type LabelProps as HeadlessLabelProps,
+} from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Label({ className, ...props }: HLabelProps) {
+function Label({ className, ...props }: HeadlessLabelProps) {
   return (
-    <HLabel
+    <HeadlessLabel
       className={cn(
         "text-foreground text-sm font-medium",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
