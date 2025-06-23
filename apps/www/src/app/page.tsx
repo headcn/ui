@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import { Description } from "@/registry/ui/description"
 import { Field } from "@/registry/ui/field"
 import { Label } from "@/registry/ui/label"
 import { Radio, RadioGroup } from "@/registry/ui/radio-group"
@@ -16,13 +17,17 @@ export default function Example() {
       value={selected}
       onChange={setSelected}
       aria-label="Server size"
+      disabled
     >
       {plans.map((plan) => (
-        <Field key={plan} className="flex items-center gap-2">
+        <Field key={plan} className="flex items-baseline gap-2">
           <Radio value={plan}>
             <span className="bg-accent-foreground invisible size-2 rounded-full group-data-checked:visible" />
           </Radio>
-          <Label>{plan}</Label>
+          <div>
+            <Label>{plan}</Label>
+            <Description className="opacity-75">Check {plan}</Description>
+          </div>
         </Field>
       ))}
     </RadioGroup>

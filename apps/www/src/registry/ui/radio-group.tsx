@@ -12,6 +12,7 @@ function Radio({ className, ...props }: HRadioProps) {
     <HRadio
       className={cn(
         "group bg-accent/50 grid place-items-center rounded-full border p-1",
+        "data-disabled:opacity-50",
         className
       )}
       {...props}
