@@ -16,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body
+        className={`${inter.className} grid h-dvh place-items-center antialiased`}
+      >
+        {children}
+      </body>
     </html>
   )
 }
