@@ -54,8 +54,14 @@
 }
 
 @layer base {
+  *:focus-visible {
+    @apply outline-primary outline-2 outline-offset-2;
+  }
+  *:focus:not(:focus-visible) {
+    @apply outline-none;
+  }
   * {
-    @apply border-border outline-primary;
+    @apply border-border;
   }
   html {
     @apply scroll-smooth;
