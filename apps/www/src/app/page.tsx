@@ -1,34 +1,20 @@
-"use client"
+import { ChevronDownIcon } from "@heroicons/react/16/solid"
 
-import { useState } from "react"
-
-import { Description } from "@/registry/ui/description"
-import { Field } from "@/registry/ui/field"
-import { Label } from "@/registry/ui/label"
-import { Radio, RadioGroup } from "@/registry/ui/radio-group"
-
-const plans = ["Startup", "Business", "Enterprise"]
+import { Select } from "@/registry/ui/select"
 
 export default function Example() {
-  const [selected, setSelected] = useState(plans[0])
-
   return (
-    <RadioGroup
-      value={selected}
-      onChange={setSelected}
-      aria-label="Server size"
-    >
-      {plans.map((plan) => (
-        <Field key={plan} className="flex items-baseline gap-2">
-          <Radio value={plan}>
-            <span className="bg-accent-foreground invisible size-2 rounded-full group-data-checked:visible" />
-          </Radio>
-          <div>
-            <Label>{plan}</Label>
-            <Description className="opacity-75">Check {plan}</Description>
-          </div>
-        </Field>
-      ))}
-    </RadioGroup>
+    <div className="relative">
+      <Select>
+        <option value="active">Active</option>
+        <option value="paused">Paused</option>
+        <option value="delayed">Delayed</option>
+        <option value="canceled">Canceled</option>
+      </Select>
+      <ChevronDownIcon
+        className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+        aria-hidden="true"
+      />
+    </div>
   )
 }
