@@ -1,11 +1,6 @@
-import { Field as HField } from "@headlessui/react"
+import { Field as HField, FieldProps as HFieldProps } from "@headlessui/react"
 
-function Field({
-  children,
-  ...props
-}: React.ComponentType<typeof HField> & {
-  children: React.ReactNode
-}) {
+function Field({ children, ...props }: HFieldProps) {
   return <HField {...props}>{children}</HField>
 }
 

@@ -1,11 +1,11 @@
-import { Input as HeadlessInput } from "@headlessui/react"
+import {
+  Input as HeadlessInput,
+  InputProps as HInputProps,
+} from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Input({
-  className,
-  ...props
-}: React.ComponentProps<typeof HeadlessInput>) {
+function Input({ className, ...props }: HInputProps) {
   return (
     <HeadlessInput
       className={cn(

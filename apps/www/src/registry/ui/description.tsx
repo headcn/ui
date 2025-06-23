@@ -1,15 +1,11 @@
-import * as React from "react"
-import { Description as HDescription } from "@headlessui/react"
+import {
+  Description as HDescription,
+  DescriptionProps as HDescriptionProps,
+} from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Description({
-  className,
-  ...props
-}: React.ComponentType<typeof HDescription> & {
-  className?: string
-  children: React.ReactNode
-}): React.JSX.Element {
+function Description({ className, ...props }: HDescriptionProps) {
   return (
     <HDescription
       className={cn(

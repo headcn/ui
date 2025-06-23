@@ -1,8 +1,8 @@
-import { Label as HLabel } from "@headlessui/react"
+import { Label as HLabel, LabelProps as HLabelProps } from "@headlessui/react"
 
 import { cn } from "@/lib/utils"
 
-function Label({ className, ...props }: React.ComponentProps<typeof HLabel>) {
+function Label({ className, ...props }: HLabelProps) {
   return (
     <HLabel
       className={cn(
