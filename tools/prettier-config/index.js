@@ -8,10 +8,7 @@ const config = {
   tabWidth: 2,
   trailingComma: "es5",
   tailwindFunctions: ["cva", "cn"],
-  plugins: [
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-tailwindcss",
-  ],
+  plugins: ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
 }
 
 export default config

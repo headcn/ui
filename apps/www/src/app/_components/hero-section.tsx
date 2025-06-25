@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { BeakerIcon } from "@heroicons/react/16/solid"
+import Link from "next/link"
 
 import { Button } from "@/registry/ui/button"
 

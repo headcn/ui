@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
-import { cn } from "@/lib/utils"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import { cn } from "@/lib/utils"
 
 import { inter } from "./fonts"
 
