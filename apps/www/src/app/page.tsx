@@ -1,21 +1,20 @@
-import { Description } from "@/registry/ui/description"
-import { Field } from "@/registry/ui/field"
-import { Label } from "@/registry/ui/label"
-import { Textarea } from "@/registry/ui/textarea"
+import DemoSection from "./_components/demo-section"
+import HeroSection from "./_components/hero-section"
 
-export default function Example() {
+export default function Page() {
   return (
-    <Field>
-      <Label>Description</Label>
-      <Description>
-        Add any extra information about your event here.
-      </Description>
-      <Textarea
-        name="description"
-        placeholder="Type your content here..."
-        className="mt-3"
-        disabled
-      ></Textarea>
-    </Field>
+    <>
+      {/* lines */}
+      <div className="pointer-events-none absolute inset-0 px-6">
+        <div className="pointer-events-none mx-auto grid size-full max-w-325 grid-cols-3 gap-4">
+          <div className="border-x"></div>
+          <div className="border-x"></div>
+          <div className="border-x"></div>
+        </div>
+      </div>
+      {/* lines */}
+      <HeroSection />
+      <DemoSection />
+    </>
   )
 }
