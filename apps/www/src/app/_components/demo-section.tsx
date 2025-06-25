@@ -64,13 +64,13 @@ const formsDemo: {
 
 export default function DemoSection() {
   return (
-    <div className="rounded-[2.5rem] bg-black/80 px-6 py-12">
+    <div className="rounded-[2.5rem] bg-black/80 px-4 py-12 sm:px-6">
       <div className="mx-auto max-w-325">
         <span className="text-muted-foreground px-2 font-mono text-sm">
           FORMS
         </span>
-        <div className="relative mt-4 grid grid-cols-3 gap-x-8 gap-y-10 px-2">
-          <div className="pointer-events-none absolute inset-0 grid grid-cols-3 gap-y-10">
+        <div className="relative mt-4 grid gap-x-8 gap-y-10 px-2 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="pointer-events-none absolute inset-0 grid gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: formsDemo.length }).map((_, idx) => (
               <div key={idx} className="relative h-64">
                 <div className="absolute inset-x-0 -inset-y-[calc(0.5rem+1px)] border-y"></div>

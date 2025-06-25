@@ -16,7 +16,7 @@ export default function Header() {
               width={30}
               height={30}
             />
-            <h2 className="text-2xl font-semibold">
+            <h2 className="hidden text-2xl font-semibold sm:block">
               Headcn<span className="font-light">UI</span>
             </h2>
           </Link>
