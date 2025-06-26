@@ -1,5 +1,6 @@
 import { allDocs } from "@/.contentlayer/generated"
 import Mdx from "@/components/mdx-components"
+import { Toc } from "@/components/toc"
 import { cn, getDocFromSlug } from "@/lib/utils"
 import { Button } from "@/registry/ui/button"
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
@@ -33,7 +34,7 @@ export default async function DocPage({ params }: DocPageProps) {
     <div className="rounded-[2.5rem] bg-black/80 px-4 py-12 sm:px-6">
       <div className="mx-auto grid max-w-325 grid-cols-12 gap-4">
         <div className="col-span-3">
-          <div className="flex flex-col gap-4 p-4">
+          <div className="sticky top-4 flex flex-col gap-4 p-4">
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
@@ -93,7 +94,14 @@ export default async function DocPage({ params }: DocPageProps) {
           </div>
           <Mdx code={doc.body.code} />
         </div>
-        <div className="col-span-3"></div>
+        <div className="col-span-3">
+          <div className="sticky top-4 flex flex-col gap-4 p-4">
+            <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              on this page
+            </span>
+            <Toc headings={doc.headings} />
+          </div>
+        </div>
       </div>
     </div>
   )

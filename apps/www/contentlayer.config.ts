@@ -1,10 +1,10 @@
+import { getHeadings } from "@/lib/markdown"
 import {
   defineDocumentType,
   defineNestedType,
   makeSource,
 } from "contentlayer2/source-files"
-// import rehypeSlug from 'rehype-slug'
-// import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from "rehype-slug"
 
 const LinksProperties = defineNestedType(() => ({
   name: "LinksProperties",
@@ -29,23 +29,17 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       resolve: (doc) => doc._raw.flattenedPath.replace(/^docs\/?/, ""),
     },
-    // headings: {
-    //   type: 'json',
-    //   resolve: async (doc) => {
-    //     const headings = require('rehype-collect-headings').collectHeadings(doc.body.raw)
-    //     return headings
-    //   }
-    // }
+    headings: {
+      type: "json",
+      resolve: async (doc) => getHeadings(doc.body.raw),
+    },
   },
 }))
 
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Doc],
-  // mdx: {
-  //   rehypePlugins: [
-  //     rehypeSlug,
-  //     [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-  //   ],
-  // },
+  mdx: {
+    rehypePlugins: [rehypeSlug],
+  },
 })
