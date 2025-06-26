@@ -1,8 +1,10 @@
+import { allDocs } from "@/.contentlayer/generated"
 import Mdx from "@/components/mdx-components"
-import { getDocFromSlug } from "@/lib/utils"
+import { cn, getDocFromSlug } from "@/lib/utils"
 import { Button } from "@/registry/ui/button"
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import { Metadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 interface DocPageProps {
@@ -30,7 +32,34 @@ export default async function DocPage({ params }: DocPageProps) {
   return (
     <div className="rounded-[2.5rem] bg-black/80 px-4 py-12 sm:px-6">
       <div className="mx-auto grid max-w-325 grid-cols-12 gap-4">
-        <div className="col-span-3"></div>
+        <div className="col-span-3">
+          <div className="flex flex-col gap-4 p-4">
+            <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              forms
+            </span>
+            <div className="flex flex-col gap-2">
+              {allDocs
+                .filter((doc) => doc.catetory === "form")
+                .map((item) => {
+                  const isActive = (slug ? slug.join("/") : "") === item.slug
+                  return (
+                    <Link
+                      key={item._id}
+                      href={`/docs/${item.slug}`}
+                      className={cn(
+                        "w-max text-sm transition-colors",
+                        isActive
+                          ? "font-semibold"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      {item.title}
+                    </Link>
+                  )
+                })}
+            </div>
+          </div>
+        </div>
         <div className="col-span-6 flex flex-col gap-6 p-4">
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-bold">{doc.title}</h1>

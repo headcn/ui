@@ -22,6 +22,7 @@ export const Doc = defineDocumentType(() => ({
     title: { type: "string", required: true },
     description: { type: "string" },
     links: { type: "nested", of: LinksProperties },
+    catetory: { type: "enum", options: ["component", "form"] },
   },
   computedFields: {
     slug: {
