@@ -75,6 +75,6 @@ export {
   Combobox,
   ComboboxButton,
   ComboboxInput,
-  ComboboxOptions,
   ComboboxOption,
+  ComboboxOptions,
 }

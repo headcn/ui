@@ -1,6 +1,6 @@
+import { TagIcon } from "@heroicons/react/16/solid"
 import Image from "next/image"
 import Link from "next/link"
-import { TagIcon } from "@heroicons/react/16/solid"
 
 import GitHubIcon from "@/components/icons/github"
 
