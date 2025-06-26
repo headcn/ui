@@ -1,16 +1,27 @@
 import type { Metadata } from "next"
 
+import { cn } from "@/lib/utils"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
-import { cn } from "@/lib/utils"
 
 import { inter } from "./fonts"
 
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Build beautiful, accessible UI components - headcn/ui",
+  title: {
+    default: "Build beautiful, accessible UI components",
+    template: "%s - headcn/ui",
+  },
   description: "Headless UI components, beautifully designed and ready to use.",
+  keywords: ["React", "Tailwind CSS", "Headless UI", "Components", "headcn"],
+  creator: "stabldev",
+  authors: [
+    {
+      name: "stabldev",
+      url: "https://x.com/stabldev",
+    },
+  ],
 }
 
 export default function RootLayout({
