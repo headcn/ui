@@ -1,19 +1,32 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer2/source-files"
 // import rehypeSlug from 'rehype-slug'
 // import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-export const Doc = defineDocumentType(() => ({
-  name: 'Doc',
-  filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
+const LinksProperties = defineNestedType(() => ({
+  name: "LinksProperties",
   fields: {
-    title: { type: 'string', required: true },
-    description: { type: 'string' },
+    doc: { type: "string" },
+    api: { type: "string" },
+  },
+}))
+
+export const Doc = defineDocumentType(() => ({
+  name: "Doc",
+  filePathPattern: `docs/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    description: { type: "string" },
+    links: { type: "nested", of: LinksProperties },
   },
   computedFields: {
     slug: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/^docs\/?/, '')
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^docs\/?/, ""),
     },
     // headings: {
     //   type: 'json',
@@ -26,7 +39,7 @@ export const Doc = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: 'content',
+  contentDirPath: "content",
   documentTypes: [Doc],
   // mdx: {
   //   rehypePlugins: [
