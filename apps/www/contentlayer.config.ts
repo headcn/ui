@@ -11,7 +11,10 @@ export const Doc = defineDocumentType(() => ({
     description: { type: 'string' },
   },
   computedFields: {
-    slug: { type: 'string', resolve: (doc) => doc._raw.flattenedPath },
+    slug: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^docs\/?/, '')
+    },
     // headings: {
     //   type: 'json',
     //   resolve: async (doc) => {

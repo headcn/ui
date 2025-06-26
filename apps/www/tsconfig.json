@@ -9,6 +9,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
