@@ -1,12 +1,11 @@
 import type { Metadata } from "next"
 
+import { inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 
-import { inter } from "./fonts"
-
-import "./globals.css"
+import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {
@@ -22,6 +21,10 @@ export const metadata: Metadata = {
       url: "https://x.com/stabldev",
     },
   ],
+  icons: {
+    icon: "/favicon.ico",
+    // TODO: add more icons
+  },
 }
 
 export default function RootLayout({
