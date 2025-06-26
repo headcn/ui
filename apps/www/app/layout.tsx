@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   ],
   icons: {
-    icon: "/favicon.ico",
+    icon: "/ui/favicon.ico",
     // TODO: add more icons
   },
 }
