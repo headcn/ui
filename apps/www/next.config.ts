@@ -1,5 +1,7 @@
 import type { NextConfig } from "next"
+import { createMDX } from "fumadocs-mdx/next"
 
+const withMDX = createMDX()
 const nextConfig: NextConfig = {
   // production-only settings
   ...(process.env.NODE_ENV === "production" && {
@@ -11,4 +13,4 @@ const nextConfig: NextConfig = {
   basePath: "/ui",
 }
 
-export default nextConfig
+export default withMDX(nextConfig)
