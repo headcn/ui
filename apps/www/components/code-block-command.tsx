@@ -5,27 +5,25 @@ import { useMemo, useState } from "react"
 import CopyButton from "./copy-button"
 
 interface CommandProps {
-  _command: string
+  command: string
 }
 
 const packageManagers = ["npm", "pnpm", "yarn", "bun"] as const
+const packageManagersPrefix = {
+  npm: "npx",
+  pnpm: "pnpm dlx",
+  yarn: "yarn dlx",
+  bun: "bunx",
+}
+
 type PackageManager = (typeof packageManagers)[number]
 
-export default function Command({ _command }: CommandProps) {
+export default function CodeBlockCommand({ command }: CommandProps) {
   const [selectedManager, setSelectedManager] = useState<PackageManager>("npm")
 
-  const newCommand = useMemo(() => {
-    switch (selectedManager) {
-      case "npm":
-        return `npx ${_command}`
-      case "pnpm":
-        return `pnpm dlx ${_command}`
-      case "yarn":
-        return `yarn dlx ${_command}`
-      case "bun":
-        return `bunx ${_command}`
-    }
-  }, [selectedManager, _command])
+  const prefixedCommand = useMemo(() => {
+    return `${packageManagersPrefix[selectedManager]} ${command}`
+  }, [selectedManager, command])
 
   return (
     <div className="flex flex-col gap-2">
@@ -45,9 +43,9 @@ export default function Command({ _command }: CommandProps) {
           </button>
         ))}
       </div>
-      <pre className="bg-secondary/25 text-muted-foreground relative">
-        <CopyButton value={newCommand} />
-        <code>{newCommand}</code>
+      <pre className="text-muted-foreground relative">
+        <CopyButton value={prefixedCommand} />
+        <code>{prefixedCommand}</code>
       </pre>
     </div>
   )

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import { useMDXComponent } from "next-contentlayer2/hooks"
-import Command from "./components/command"
+import CodeBlockCommand from "./components/code-block-command"
 import ComponentPreview from "./components/component-preview"
 import CopyButton from "./components/copy-button"
 
@@ -10,7 +10,7 @@ interface MdxProps {
 
 const components = {
   ComponentPreview,
-  Command,
+  CodeBlockCommand,
   pre: ({
     __rawString__,
     children,
