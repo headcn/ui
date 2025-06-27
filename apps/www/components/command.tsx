@@ -1,7 +1,8 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useCallback, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
+import CopyButton from "./copy-button"
 
 interface CommandProps {
   _command: string
@@ -12,7 +13,6 @@ type PackageManager = (typeof packageManagers)[number]
 
 export default function Command({ _command }: CommandProps) {
   const [selectedManager, setSelectedManager] = useState<PackageManager>("npm")
-  const [hasCopied, setHasCopied] = useState(false)
 
   const newCommand = useMemo(() => {
     switch (selectedManager) {
@@ -26,11 +26,6 @@ export default function Command({ _command }: CommandProps) {
         return `bunx ${_command}`
     }
   }, [selectedManager, _command])
-
-  const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(newCommand)
-    setHasCopied(true)
-  }, [newCommand])
 
   return (
     <div className="flex flex-col gap-2">
@@ -49,16 +44,11 @@ export default function Command({ _command }: CommandProps) {
             {manager}
           </button>
         ))}
-        <button
-          className="text-muted-foreground ml-auto font-mono text-xs font-semibold uppercase"
-          onClick={handleCopy}
-        >
-          {hasCopied ? "copied" : "copy"}
-        </button>
       </div>
-      <div className="bg-secondary/25 text-muted-foreground p-4 font-mono text-sm font-medium">
-        {newCommand}
-      </div>
+      <pre className="bg-secondary/25 text-muted-foreground relative">
+        <CopyButton value={newCommand} />
+        <code>{newCommand}</code>
+      </pre>
     </div>
   )
 }
