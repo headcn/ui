@@ -5,7 +5,7 @@ import { Button } from "@/registry/ui/button"
 
 export default function HeroSection() {
   return (
-    <div className="relative z-10 px-4 sm:px-6">
+    <div className="relative z-10 border-t px-4 sm:px-6">
       <div className="mx-auto max-w-325 px-2 py-15 sm:py-20">
         <span className="bg-accent-foreground/10 text-accent-foreground inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-mono text-xs font-medium uppercase">
           <BeakerIcon className="fill-muted-foreground size-4" /> In Development

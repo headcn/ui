@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
@@ -70,5 +71,34 @@
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
     @apply bg-background text-foreground overflow-x-hidden;
+  }
+}
+
+@layer components {
+  [data-rehype-pretty-code-figure] {
+    margin-block: 1rem !important;
+  }
+
+  [data-line-numbers] {
+    display: grid;
+    min-width: 100%;
+    white-space: pre;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    counter-reset: line;
+    box-decoration-break: clone;
+  }
+
+  [data-line-numbers] [data-line]::before {
+    font-size: var(--text-sm);
+    counter-increment: line;
+    content: counter(line);
+    padding-right: calc(var(--spacing) * 4);
+    color: var(--color-muted-foreground);
+  }
+
+  [data-line-numbers] [data-highlighted-line][data-line]::before {
+    background-color: var(--color-muted);
   }
 }

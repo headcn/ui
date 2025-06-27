@@ -8,7 +8,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,7 +22,8 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "next.config.js",
-    "../../dist/apps/www/types/**/*.ts"
+    "../../dist/apps/www/types/**/*.ts",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

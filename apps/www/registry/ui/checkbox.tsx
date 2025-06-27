@@ -5,7 +5,7 @@ import {
 
 import { cn } from "@/lib/utils"
 
-function CheckBox({ className, ...props }: HeadlessCheckboxProps) {
+function Checkbox({ className, ...props }: HeadlessCheckboxProps) {
   return (
     <HeadlessCheckbox
       className={cn(
@@ -34,4 +34,4 @@ function CheckBox({ className, ...props }: HeadlessCheckboxProps) {
   )
 }
 
-export { CheckBox }
+export { Checkbox }

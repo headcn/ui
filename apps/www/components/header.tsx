@@ -6,7 +6,7 @@ import GitHubIcon from "@/components/icons/github"
 
 export default function Header() {
   return (
-    <header className="relative border-b px-6">
+    <header className="relative px-6">
       <div className="mx-auto flex max-w-325 items-center justify-between gap-4 px-2 py-6">
         <div className="flex items-center gap-4">
           <Link href={"/"} className="flex items-center gap-3">
