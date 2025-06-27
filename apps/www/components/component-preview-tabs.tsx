@@ -1,10 +1,8 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/ui/button"
-import { CheckIcon } from "@heroicons/react/16/solid"
-import { ClipboardIcon } from "@heroicons/react/24/outline"
 import { useState } from "react"
+import CopyButton from "./copy-button"
 
 interface ComponentPreviewTabsProps {
   code: string
@@ -18,12 +16,6 @@ export default function ComponentPreviewTabs({
   highlightedCode,
 }: ComponentPreviewTabsProps) {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview")
-  const [hasCopied, setHasCopied] = useState(false)
-
-  function handleCopy() {
-    navigator.clipboard.writeText(code)
-    setHasCopied(true)
-  }
 
   return (
     <div className="flex flex-col gap-2">
@@ -54,18 +46,7 @@ export default function ComponentPreviewTabs({
           preview
         ) : (
           <>
-            <Button
-              variant={"ghost"}
-              size={"icon-xs"}
-              className="absolute top-2 right-2"
-              onClick={handleCopy}
-            >
-              {hasCopied ? (
-                <CheckIcon className="text-muted-foreground size-4" />
-              ) : (
-                <ClipboardIcon className="text-muted-foreground size-4" />
-              )}
-            </Button>
+            <CopyButton value={code} />
             <div
               className="size-full"
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
