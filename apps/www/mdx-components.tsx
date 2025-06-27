@@ -35,7 +35,7 @@ export default function Mdx({ code }: MdxProps) {
         "prose-pre:bg-secondary/25 prose-pre:rounded-none prose-pre:m-0",
         "prose-headings:text-foreground prose-h2:text-xl",
         "prose-headings:text-base prose-headings:font-semibold",
-        "prose-p:text-muted-foreground"
+        "prose-p:text-muted-foreground prose-p:text-sm"
       )}
     >
       <Component components={components} />
