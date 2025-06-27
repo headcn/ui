@@ -12,13 +12,13 @@ const components = {
   ComponentPreview,
   Command,
   pre: ({
-    raw,
+    __rawString__,
     children,
     ...props
-  }: React.HTMLAttributes<HTMLPreElement> & { raw?: string }) => {
+  }: React.HTMLAttributes<HTMLPreElement> & { __rawString__?: string }) => {
     return (
       <div className="relative">
-        <CopyButton value={raw ?? ""} />
+        <CopyButton value={__rawString__ ?? ""} />
         <pre {...props}>{children}</pre>
       </div>
     )

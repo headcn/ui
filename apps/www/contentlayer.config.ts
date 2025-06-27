@@ -44,6 +44,17 @@ export default makeSource({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
+      () => (tree) => {
+        // store raw code before rehypePrettyCode transforms dom
+        visit(tree, "element", (node) => {
+          if (node?.tagName === "pre") {
+            const [codeEl] = node.children
+            if (codeEl.tagName !== "code") return
+
+            node.__rawString__ = codeEl.children?.[0]?.value ?? ""
+          }
+        })
+      },
       [
         rehypePrettyCode,
         {
@@ -52,13 +63,18 @@ export default makeSource({
         },
       ],
       () => (tree) => {
+        // attach metada to pre element
         visit(tree, "element", (node) => {
-          if (node.tagName === "pre") {
-            const code = node.children.at(0)
-            if (code?.tagName === "code") {
-              const text = code.children.at(0)?.value || ""
-              node.properties.raw = text
+          if (
+            node?.tagName === "figure" &&
+            "data-rehype-pretty-code-figure" in node.properties
+          ) {
+            const preElement = node.children.at(-1)
+            if (preElement.tagName !== "pre") {
+              return
             }
+
+            preElement.properties["__rawString__"] = node.__rawString__
           }
         })
       },
