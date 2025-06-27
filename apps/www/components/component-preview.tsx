@@ -18,12 +18,18 @@ export default async function ComponentPreview({
     )
     let code = await fs.readFile(filePath, "utf-8")
     code = code.replace("registry", "components")
-    code = await highlightCode(code)
+    const highlightedCode = await highlightCode(code)
 
     const mod = await import(`@/registry/examples/${name}.tsx`)
     const Component = mod.default
 
-    return <ComponentPreviewTabs preview={<Component />} code={code} />
+    return (
+      <ComponentPreviewTabs
+        code={code}
+        preview={<Component />}
+        highlightedCode={highlightedCode}
+      />
+    )
   } catch (err) {
     console.error(err)
     return <div>Error loading component</div>
