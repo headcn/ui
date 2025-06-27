@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils"
 import { useMDXComponent } from "next-contentlayer2/hooks"
 import Command from "./components/command"
 import ComponentPreview from "./components/component-preview"
+import CopyButton from "./components/copy-button"
 
 interface MdxProps {
   code: string
@@ -10,6 +11,18 @@ interface MdxProps {
 const components = {
   ComponentPreview,
   Command,
+  pre: ({
+    raw,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLPreElement> & { raw?: string }) => {
+    return (
+      <div className="relative">
+        <CopyButton value={raw ?? ""} />
+        <pre {...props}>{children}</pre>
+      </div>
+    )
+  },
 }
 
 export default function Mdx({ code }: MdxProps) {

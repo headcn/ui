@@ -76,7 +76,7 @@
 
 @layer components {
   [data-rehype-pretty-code-figure] {
-    margin-top: 1rem !important;
+    margin-block: 1rem !important;
   }
 
   [data-line-numbers] {

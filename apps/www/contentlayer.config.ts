@@ -6,6 +6,7 @@ import {
 } from "contentlayer2/source-files"
 import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
+import { visit } from "unist-util-visit"
 
 const LinksProperties = defineNestedType(() => ({
   name: "LinksProperties",
@@ -50,6 +51,17 @@ export default makeSource({
           keepBackground: false,
         },
       ],
+      () => (tree) => {
+        visit(tree, "element", (node) => {
+          if (node.tagName === "pre") {
+            const code = node.children.at(0)
+            if (code?.tagName === "code") {
+              const text = code.children.at(0)?.value || ""
+              node.properties.raw = text
+            }
+          }
+        })
+      },
     ],
   },
 })
