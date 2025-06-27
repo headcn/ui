@@ -1,12 +1,11 @@
-import { allDocs } from "@/.contentlayer/generated"
 import Mdx from "@/components/mdx-components"
 import { Toc } from "@/components/toc"
-import { cn, getDocFromSlug } from "@/lib/utils"
+import { getDocFromSlug } from "@/lib/utils"
 import { Button } from "@/registry/ui/button"
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
+import ListForms from "./_components/list-forms"
 
 interface DocPageProps {
   params: Promise<{ slug?: string[] }>
@@ -38,27 +37,7 @@ export default async function DocPage({ params }: DocPageProps) {
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
-            <div className="flex flex-col gap-2">
-              {allDocs
-                .filter((doc) => doc.catetory === "form")
-                .map((item) => {
-                  const isActive = (slug ? slug.join("/") : "") === item.slug
-                  return (
-                    <Link
-                      key={item._id}
-                      href={`/docs/${item.slug}`}
-                      className={cn(
-                        "w-max text-sm transition-colors",
-                        isActive
-                          ? "font-semibold"
-                          : "text-muted-foreground hover:text-foreground"
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  )
-                })}
-            </div>
+            <ListForms slug={slug} />
           </div>
         </div>
         <div className="col-span-6 flex flex-col gap-6 p-4">

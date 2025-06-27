@@ -1,14 +1,12 @@
-import { Button } from "@/registry/ui/button"
-import { Checkbox } from "@/registry/ui/checkbox"
 import { useMDXComponent } from "next-contentlayer2/hooks"
+import ComponentPreview from "./component-preview"
 
 interface MdxProps {
   code: string
 }
 
 const components = {
-  Button,
-  Checkbox,
+  ComponentPreview,
 }
 
 export default function Mdx({ code }: MdxProps) {
