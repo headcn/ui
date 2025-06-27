@@ -4,6 +4,7 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer2/source-files"
+import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 
 const LinksProperties = defineNestedType(() => ({
@@ -40,6 +41,15 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [Doc],
   mdx: {
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          keepBackground: false,
+        },
+      ],
+    ],
   },
 })

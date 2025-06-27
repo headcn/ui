@@ -1,6 +1,6 @@
-import Mdx from "@/components/mdx-components"
 import { Toc } from "@/components/toc"
 import { getDocFromSlug } from "@/lib/utils"
+import Mdx from "@/mdx-components"
 import { Button } from "@/registry/ui/button"
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import { Metadata } from "next"
