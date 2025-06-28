@@ -1,5 +1,5 @@
 {
-  "tailwindCSS.classFunctions": ["cva", "cx"],
+  "tailwindCSS.classFunctions": ["cva", "cn"],
   "eslint.workingDirectories": [
     {
       "mode": "auto"
