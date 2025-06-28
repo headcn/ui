@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
-import { inter } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import { inter } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 
 import "@/styles/globals.css"
 
@@ -22,9 +22,14 @@ export const metadata: Metadata = {
     },
   ],
   icons: {
-    icon: "/ui/favicon.ico",
-    // TODO: add more icons
+    icon: [
+      { url: "/ui/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/ui/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/ui/favicon.ico",
+    apple: "/ui/apple-touch-icon.png",
   },
+  manifest: "/ui/site.webmanifest",
 }
 
 export default function RootLayout({
