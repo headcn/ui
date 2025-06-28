@@ -1,0 +1,22 @@
+name: Deploy to vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://ui.headcn.site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v20
+        with:
+          github-comment: false
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: "--prod"
+          vercel-org-id: ${{ secrets.ORG_ID}}
+          vercel-project-id: ${{ secrets.PROJECT_ID}}

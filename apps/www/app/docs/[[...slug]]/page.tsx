@@ -17,6 +17,9 @@ interface DocPageProps {
   params: Promise<{ slug?: string[] }>
 }
 
+export const dynamic = "force-static"
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return allDocs.map((doc) => ({
     slug: doc.slug.split("/"),
