@@ -11,7 +11,6 @@ export default function Footer() {
         >
           stabldev
         </a>
-        .
       </span>
       <span>
         The source code is available on{" "}
@@ -23,7 +22,6 @@ export default function Footer() {
         >
           GitHub
         </a>
-        .
       </span>
     </footer>
   )

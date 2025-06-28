@@ -12,7 +12,7 @@ export function Toc({ headings }: TocProps) {
           <a
             href={`#${heading.id}`}
             className="text-muted-foreground hover:text-foreground w-max text-sm transition-colors"
-            style={{ marginLeft: `${(heading.level - 2) * 12}px` }}
+            style={{ marginLeft: `${(heading.level - 2) * 1}rem` }}
           >
             {heading.text}
           </a>

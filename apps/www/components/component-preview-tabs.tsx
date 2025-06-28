@@ -19,7 +19,7 @@ export default function ComponentPreviewTabs({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="ml-auto flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <button
           className={cn(
             "font-mono text-xs font-semibold uppercase",
