@@ -6,8 +6,11 @@ on:
       - main
 
 jobs:
-  deploy:
+  deployment:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://ui.headcn.site
     steps:
       - uses: actions/checkout@v4
       - uses: amondnet/vercel-action@v20
