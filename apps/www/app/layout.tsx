@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
+import SiteFooter from "@/components/site-footer"
+import SiteHeader from "@/components/site-header"
 import { inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 
 import "@/styles/globals.css"
 
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     // TODO: add more icons
   },
+  manifest: "/ui/site.webmanifest",
 }
 
 export default function RootLayout({
@@ -40,9 +41,9 @@ export default function RootLayout({
         <div className="absolute inset-0 bottom-0 -z-30 bg-[url(/media/bg-bottom.jpg)] bg-position-[35%_bottom] bg-no-repeat mix-blend-screen sm:bg-position-[38%_bottom] md:bg-position-[40%_bottom] lg:bg-position-[44%_bottom] xl:bg-bottom forced-colors:hidden"></div>
 
         <main className="flex flex-col">
-          <Header />
+          <SiteHeader />
           {children}
-          <Footer />
+          <SiteFooter />
         </main>
       </body>
     </html>

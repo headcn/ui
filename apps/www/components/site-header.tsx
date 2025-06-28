@@ -1,9 +1,8 @@
 import { TagIcon } from "@heroicons/react/16/solid"
 import Link from "next/link"
+import { Icons } from "./icons"
 
-import GitHubIcon from "@/components/icons/github"
-
-export default function Header() {
+export default function SiteHeader() {
   return (
     <header className="relative px-6">
       <div className="mx-auto flex max-w-325 items-center justify-between gap-4 px-2 py-6">
@@ -25,7 +24,7 @@ export default function Header() {
           </span>
         </div>
         <a href="https://github.com/headcn/ui" target="_blank" rel="noreferrer">
-          <GitHubIcon className="fill-foreground size-6" />
+          <Icons.github className="fill-foreground size-6" />
         </a>
       </div>
     </header>

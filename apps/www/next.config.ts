@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
   
   // shared
   devIndicators: false,
+  basePath: "/ui",
+  assetPrefix: "/ui/",
 }
 
 export default nextConfig
