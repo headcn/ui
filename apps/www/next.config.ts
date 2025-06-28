@@ -1,15 +1,20 @@
 import type { NextConfig } from "next"
 
+const isGitHubPages = process.env.DEPLOY_TARGET === "github-pages"
+
 const nextConfig: NextConfig = {
-  // production-only settings
-  ...(process.env.NODE_ENV === "production" && {
-    output: "export",
-    distDir: "../../dist/apps/www",
+  // Always export for static deployment
+  output: "export",
+  distDir: "../../dist/apps/www",
+  
+  // GitHub Pages specific settings
+  ...(isGitHubPages && {
+    basePath: "/ui",
+    assetPrefix: "/ui/",
   }),
+  
   // shared
   devIndicators: false,
-  basePath: "/ui",
-  assetPrefix: '/ui/',
 }
 
 export default nextConfig
