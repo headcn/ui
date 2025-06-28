@@ -1,15 +1,21 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  // production-only settings
-  ...(process.env.NODE_ENV === "production" && {
-    output: "export",
-    distDir: "../../dist/apps/www",
-  }),
-  // shared
   devIndicators: false,
-  basePath: "/ui",
-  assetPrefix: "/ui/",
+  async redirects() {
+    return [
+      {
+        source: "/components",
+        destination: "/docs/components/button",
+        permanent: true,
+      },
+      {
+        source: "/docs/components",
+        destination: "/docs/components/button",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig
