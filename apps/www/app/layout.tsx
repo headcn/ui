@@ -22,12 +22,8 @@ export const metadata: Metadata = {
     },
   ],
   icons: {
-    icon: [
-      { url: "/ui/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/ui/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    shortcut: "/ui/favicon.ico",
-    apple: "/ui/apple-touch-icon.png",
+    icon: "/favicon.ico",
+    // TODO: add more icons
   },
   manifest: "/ui/site.webmanifest",
 }
@@ -40,9 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn(inter.className, "relative bg-black antialiased")}>
-        <div className="absolute inset-0 top-0 -z-20 bg-[url(/ui/media/bg-top.jpg)] bg-position-[35%_top] bg-no-repeat sm:bg-position-[38%_top] md:bg-position-[40%_top] lg:bg-position-[44%_top] xl:bg-top forced-colors:hidden"></div>
-        <div className="absolute inset-0 -z-10 bg-[url(/ui/media/bg-noise.png)] opacity-10 forced-colors:hidden"></div>
-        <div className="absolute inset-0 bottom-0 -z-30 bg-[url(/ui/media/bg-bottom.jpg)] bg-position-[35%_bottom] bg-no-repeat mix-blend-screen sm:bg-position-[38%_bottom] md:bg-position-[40%_bottom] lg:bg-position-[44%_bottom] xl:bg-bottom forced-colors:hidden"></div>
+        <div className="absolute inset-0 top-0 -z-20 bg-[url(/media/bg-top.jpg)] bg-position-[35%_top] bg-no-repeat sm:bg-position-[38%_top] md:bg-position-[40%_top] lg:bg-position-[44%_top] xl:bg-top forced-colors:hidden"></div>
+        <div className="absolute inset-0 -z-10 bg-[url(/media/bg-noise.png)] opacity-10 forced-colors:hidden"></div>
+        <div className="absolute inset-0 bottom-0 -z-30 bg-[url(/media/bg-bottom.jpg)] bg-position-[35%_bottom] bg-no-repeat mix-blend-screen sm:bg-position-[38%_bottom] md:bg-position-[40%_bottom] lg:bg-position-[44%_bottom] xl:bg-bottom forced-colors:hidden"></div>
 
         <main className="flex flex-col">
           <SiteHeader />
