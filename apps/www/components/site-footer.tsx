@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function SiteFooter() {
   return (
     <footer className="my-10 flex flex-col items-center justify-center gap-1 text-sm">
       <span>
