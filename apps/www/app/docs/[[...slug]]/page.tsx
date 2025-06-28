@@ -17,6 +17,12 @@ interface DocPageProps {
   params: Promise<{ slug?: string[] }>
 }
 
+export async function generateStaticParams() {
+  return allDocs.map((doc) => ({
+    slug: doc.slug.split("/"),
+  }))
+}
+
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
