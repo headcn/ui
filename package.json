@@ -18,11 +18,15 @@
     "release:publish": "turbo run build --filter=headcn && changeset publish",
     "release:version": "changeset version",
     "www:dev": "turbo run dev --filter=www",
-    "www:build": "turbo run build --filter=www"
+    "www:build": "turbo run build --filter=www",
+    "prepare": "husky",
+    "pre-commit": "lint-staged"
   },
   "packageManager": "pnpm@8.15.6",
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "turbo": "^2.5.4"
   }
