@@ -9,7 +9,7 @@ import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Build beautiful, accessible UI components",
+    default: "Build beautiful, accessible UI components - headcn/ui",
     template: "%s - headcn/ui",
   },
   description: "Headless UI components, beautifully designed and ready to use.",
