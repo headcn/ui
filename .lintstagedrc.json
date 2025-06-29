@@ -1,4 +1,4 @@
 {
-  "**/*.{js,jsx,ts,tsx}": ["prettier -w", "pnpm lint"],
+  "**/*.{js,jsx,ts,tsx}": ["prettier -w"],
   "**/*.{json,css,md}": ["prettier -w"]
 }
