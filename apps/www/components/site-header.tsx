@@ -8,10 +8,8 @@ export default function SiteHeader() {
       <div className="mx-auto flex max-w-325 items-center justify-between gap-4 px-2 py-6">
         <div className="flex items-center gap-4">
           <Link href={"/"} className="flex items-center gap-3">
-            <Icons.logo className="size-5" />
-            <h2 className="hidden text-2xl font-semibold sm:block">
-              Headcn<span className="font-light">UI</span>
-            </h2>
+            <Icons.logo className="size-6" />
+            <h2 className="font-brand hidden text-base sm:block">headcn/ui</h2>
           </Link>
           <span className="bg-accent-foreground/10 text-accent-foreground inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-mono text-xs font-medium">
             v0.1
