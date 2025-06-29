@@ -17,7 +17,7 @@ export default function DemoCard({ name, Component }: FormDemoItem) {
         className="absolute inset-0 z-10"
       />
       <div className="bg-secondary/25 group-hover:bg-secondary/35 relative grid h-64 place-items-center transition-colors">
-        <div className="absolute inset-0 -z-10 bg-[url(/media/bg-noise.png)] opacity-10"></div>
+        <div className="absolute inset-0 -z-10 bg-[url(/media/imgs/bg-noise.png)] opacity-10"></div>
         {Component}
       </div>
       <span className="text-sm font-semibold">{name}</span>

@@ -1,10 +1,19 @@
 # headcn/ui
 
-Beautiful, accessible components built with **Tailwind CSS** and **Headless UI** - and a CLI to add them to your React projects.  
-**Spend less time on boilerplate, and more time building.**
+> This project is in development and not yet ready for public use.
 
-![headcnui_banner](https://github.com/user-attachments/assets/b22c9212-5998-4f48-aa24-04dd8d478032)
+Beautifully designed and ready to use Headless UI components - with a CLI to add them instantly. **Spend less time on boilerplate, and more time building**.
+
+![hero](./apps/www/public/og.png)
 
 ## Documentation
 
 Visit http://ui.headcn.site/docs to view the documentation.
+
+## Contributing
+
+We welcome contributions!  
+Please check out our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to get started.
+
+If you find this project interesting, please give it a ⭐  
+Your support inspires us to improve and grow the project.
