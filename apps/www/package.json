@@ -11,8 +11,9 @@
     "build": "run-p build:*",
     "start": "next start",
     "lint": "next lint",
-    "format:check": "prettier --check . --ignore-path ../../.gitignore",
-    "format:write": "prettier --write . --ignore-path ../../.gitignore"
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "typecheck": "tsc --noEmit"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

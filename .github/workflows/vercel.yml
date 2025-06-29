@@ -12,8 +12,11 @@ jobs:
       name: production
       url: https://ui.headcn.site
     steps:
-      - uses: actions/checkout@v4
-      - uses: amondnet/vercel-action@v20
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to vercel
+        uses: amondnet/vercel-action@v20
         with:
           github-comment: false
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

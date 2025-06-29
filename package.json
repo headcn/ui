@@ -20,7 +20,8 @@
     "www:dev": "turbo run dev --filter=www",
     "www:build": "turbo run build --filter=www",
     "prepare": "husky",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "typecheck": "turbo run typecheck"
   },
   "packageManager": "pnpm@8.15.6",
   "devDependencies": {
