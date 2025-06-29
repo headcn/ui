@@ -5,7 +5,7 @@ import ComponentPreview from "./components/component-preview"
 import CopyButton from "./components/copy-button"
 
 interface MdxProps {
-  code: string
+  code: number
 }
 
 const components = {
