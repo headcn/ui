@@ -9,3 +9,11 @@ Beautifully designed and ready to use Headless UI components - with a CLI to add
 ## Documentation
 
 Visit http://ui.headcn.site/docs to view the documentation.
+
+## Contributing
+
+We welcome contributions!
+Please check out our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to get started.
+
+If you find this project interesting, please give it a ⭐
+Your support inspires us to improve and grow the project.
