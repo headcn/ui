@@ -10,13 +10,23 @@ jobs:
   code_quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: "22.x"
           cache: "pnpm"
 
-      - run: pnpm install --frozen-lockfile
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build .contentlayer
+        run: pnpm -F www build:contentlayer
+
       - run: pnpm lint
       - run: pnpm typecheck
