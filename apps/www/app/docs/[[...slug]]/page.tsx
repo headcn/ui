@@ -94,7 +94,7 @@ export default async function DocPage({ params }: DocPageProps) {
             </div>
             <Mdx code={doc.body.code} />
             {(prevDoc || nextDoc) && (
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
                 {prevDoc && (
                   <Link href={`/docs/${prevDoc.slug}`}>
                     <Button
@@ -107,10 +107,10 @@ export default async function DocPage({ params }: DocPageProps) {
                   </Link>
                 )}
                 {nextDoc && (
-                  <Link href={`/docs/${nextDoc.slug}`}>
+                  <Link href={`/docs/${nextDoc.slug}`} className="ml-auto">
                     <Button
                       variant={"ghost"}
-                      className="ml-auto cursor-pointer font-mono uppercase"
+                      className="cursor-pointer font-mono uppercase"
                     >
                       {nextDoc.title}
                       <ArrowRightIcon className="text-muted-foreground size-4" />
