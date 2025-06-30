@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "headcn/ui",
   url: "https://ui.headcn.site",
-  ogImage: "https://ui.headcn.site/og.jpg",
+  ogImage: "https://ui.headcn.site/og.png",
   description:
     "Beautifully designed and ready to use Headless UI components - with a CLI to add them instantly.",
   links: {
