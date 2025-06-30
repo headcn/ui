@@ -41,17 +41,19 @@ export default function ComponentPreviewTabs({
           Code
         </button>
       </div>
-      <div className="bg-secondary/25 relative grid aspect-video place-items-center gap-4">
+      <div className="bg-secondary/25 relative">
         {activeTab === "preview" ? (
-          <div className="not-prose">{preview}</div>
+          <div className="not-prose grid aspect-video place-items-center">
+            {preview}
+          </div>
         ) : (
-          <>
+          <div className="relative">
             <CopyButton value={code} />
             <div
-              className="size-full"
+              className="scrollbar scrollbar-track-transparent scrollbar-thumb-secondary/30 scrollbar-thumb-rounded hover:scrollbar-thumb-secondary/50 scrollbar-h-1.5 overflow-x-auto overflow-y-visible py-4 pb-3"
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
             />
-          </>
+          </div>
         )}
       </div>
     </div>
