@@ -43,12 +43,12 @@ export default function ComponentPreviewTabs({
       </div>
       <div className="bg-secondary/25 relative grid aspect-video place-items-center gap-4">
         {activeTab === "preview" ? (
-          <div className="not-prose">{preview}</div>
+          <div className="not-prose max-w-full overflow-hidden">{preview}</div>
         ) : (
           <>
             <CopyButton value={code} />
             <div
-              className="size-full"
+              className="size-full overflow-auto"
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
             />
           </>
