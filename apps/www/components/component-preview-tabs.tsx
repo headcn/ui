@@ -43,7 +43,7 @@ export default function ComponentPreviewTabs({
       </div>
       <div className="bg-secondary/25 relative grid aspect-video place-items-center gap-4">
         {activeTab === "preview" ? (
-          preview
+          <div className="not-prose">{preview}</div>
         ) : (
           <>
             <CopyButton value={code} />
