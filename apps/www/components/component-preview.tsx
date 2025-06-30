@@ -17,7 +17,7 @@ export default async function ComponentPreview({
       `${name}.tsx`
     )
     let code = await fs.readFile(filePath, "utf-8")
-    code = code.replace("registry", "components")
+    code = code.replaceAll("@/registry", "@/components")
     const highlightedCode = await highlightCode(code)
 
     const mod = await import(`@/registry/examples/${name}.tsx`)
