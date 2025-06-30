@@ -5,6 +5,7 @@ import SiteHeader from "@/components/site-header"
 import { boldonse, inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 
+import { siteConfig } from "@/config/site"
 import "@/styles/globals.css"
 
 export const metadata: Metadata = {
@@ -12,8 +13,15 @@ export const metadata: Metadata = {
     default: "Build beautiful, accessible UI components - headcn/ui",
     template: "%s - headcn/ui",
   },
-  description: "Headless UI components, beautifully designed and ready to use.",
-  keywords: ["React", "Tailwind CSS", "Headless UI", "Components", "headcn"],
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Server Components",
+    "Headless UI",
+  ],
   creator: "stabldev",
   authors: [
     {
@@ -21,6 +29,29 @@ export const metadata: Metadata = {
       url: "https://x.com/stabldev",
     },
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@stabldev",
+  },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -29,7 +60,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest",
+  manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 export default function RootLayout({
