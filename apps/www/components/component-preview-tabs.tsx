@@ -41,7 +41,7 @@ export default function ComponentPreviewTabs({
           Code
         </button>
       </div>
-      <div className="bg-secondary/25 relative">
+      <div className="bg-secondary/25 not-prose">
         {activeTab === "preview" ? (
           <div className="not-prose grid aspect-video place-items-center">
             {preview}

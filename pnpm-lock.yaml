@@ -116,7 +116,7 @@ importers:
         version: 4.1.5
       tailwind-scrollbar:
         specifier: ^4.0.2
-        version: 4.0.2(react@19.1.0)(tailwindcss@4.1.10)
+        version: 4.0.2(react@19.1.0)(tailwindcss@4.1.11)
       tailwindcss:
         specifier: ^4
         version: 4.1.11
@@ -7115,14 +7115,14 @@ packages:
     resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
     dev: false
 
-  /tailwind-scrollbar@4.0.2(react@19.1.0)(tailwindcss@4.1.10):
+  /tailwind-scrollbar@4.0.2(react@19.1.0)(tailwindcss@4.1.11):
     resolution: {integrity: sha512-wAQiIxAPqk0MNTPptVe/xoyWi27y+NRGnTwvn4PQnbvB9kp8QUBiGl/wsfoVBHnQxTmhXJSNt9NHTmcz9EivFA==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: 4.x
     dependencies:
       prism-react-renderer: 2.4.1(react@19.1.0)
-      tailwindcss: 4.1.10
+      tailwindcss: 4.1.11
     transitivePeerDependencies:
       - react
     dev: true
