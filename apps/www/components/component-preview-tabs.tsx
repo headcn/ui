@@ -50,7 +50,7 @@ export default function ComponentPreviewTabs({
           <div className="relative">
             <CopyButton value={code} />
             <div
-              className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary scrollbar-thumb-rounded-md overflow-x-auto overflow-y-visible py-4 pb-3"
+              className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-secondary scrollbar-thumb-rounded-md overflow-x-auto overflow-y-visible py-4 pb-3"
               dangerouslySetInnerHTML={{ __html: highlightedCode }}
             />
           </div>
