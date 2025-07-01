@@ -92,7 +92,7 @@ importers:
         version: 4.1.11
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.1.10)
+        version: 0.5.16(tailwindcss@4.1.11)
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
@@ -116,7 +116,7 @@ importers:
         version: 4.1.5
       tailwindcss:
         specifier: ^4
-        version: 4.1.10
+        version: 4.1.11
       typescript:
         specifier: ^5
         version: 5.8.3
@@ -2251,7 +2251,7 @@ packages:
       tailwindcss: 4.1.11
     dev: true
 
-  /@tailwindcss/typography@0.5.16(tailwindcss@4.1.10):
+  /@tailwindcss/typography@0.5.16(tailwindcss@4.1.11):
     resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
@@ -2260,7 +2260,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.1.10
+      tailwindcss: 4.1.11
     dev: true
 
   /@tanstack/react-virtual@3.13.10(react-dom@19.1.0)(react@19.1.0):
