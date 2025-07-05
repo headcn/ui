@@ -19,13 +19,11 @@ const people: Person[] = [
   { id: 1, name: "Tom Cook" },
   { id: 2, name: "Wade Cooper" },
   { id: 3, name: "Tanya Fox" },
-  { id: 4, name: "Arlene Mccoy" },
-  { id: 5, name: "Devon Webb" },
 ]
 
 export default function ComboboxDemo() {
   const [query, setQuery] = useState("")
-  const [selected, setSelected] = useState<number>(people[1].id)
+  const [selected, setSelected] = useState<number>(people[0].id)
 
   const selectedPerson = people.find((p) => p.id === selected)
   const filteredPeople =
@@ -40,6 +38,7 @@ export default function ComboboxDemo() {
       value={selectedPerson}
       onChange={(value) => value && setSelected(value.id)}
       onClose={() => setQuery("")}
+      __demoMode
     >
       <div className="relative">
         <ComboboxInput<Person>
