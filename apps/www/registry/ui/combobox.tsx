@@ -29,7 +29,10 @@ function ComboboxButton({ className, ...props }: HeadlessComboboxButtonProps) {
   )
 }
 
-function ComboboxInput({ className, ...props }: HeadlessComboboxInputProps) {
+function ComboboxInput<TType = string>({
+  className,
+  ...props
+}: HeadlessComboboxInputProps<typeof HeadlessComboboxInput, TType>) {
   return (
     <HeadlessComboboxInput
       className={cn(
@@ -58,7 +61,10 @@ function ComboboxOptions({
   )
 }
 
-function ComboboxOption({ className, ...props }: HeadlessComboboxOptionProps) {
+function ComboboxOption<TType = string>({
+  className,
+  ...props
+}: HeadlessComboboxOptionProps<typeof HeadlessComboboxOption, TType>) {
   return (
     <HeadlessComboboxOption
       className={cn(
