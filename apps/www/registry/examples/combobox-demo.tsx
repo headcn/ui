@@ -10,7 +10,12 @@ import {
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
 
-const people = [
+interface Person {
+  id: number
+  name: string
+}
+
+const people: Person[] = [
   { id: 1, name: "Tom Cook" },
   { id: 2, name: "Wade Cooper" },
   { id: 3, name: "Tanya Fox" },
@@ -20,8 +25,9 @@ const people = [
 
 export default function ComboboxDemo() {
   const [query, setQuery] = useState("")
-  const [selected, setSelected] = useState(people[1])
+  const [selected, setSelected] = useState<number>(people[1].id)
 
+  const selectedPerson = people.find((p) => p.id === selected)
   const filteredPeople =
     query === ""
       ? people
@@ -30,14 +36,14 @@ export default function ComboboxDemo() {
         })
 
   return (
-    <Combobox
-      value={selected}
-      onChange={(value) => setSelected(value)}
+    <Combobox<Person>
+      value={selectedPerson}
+      onChange={(value) => value && setSelected(value.id)}
       onClose={() => setQuery("")}
     >
       <div className="relative">
-        <ComboboxInput
-          displayValue={(person) => person?.name}
+        <ComboboxInput<Person>
+          displayValue={(person) => person.name}
           onChange={(event) => setQuery(event.target.value)}
         />
         <ComboboxButton>
@@ -47,7 +53,7 @@ export default function ComboboxDemo() {
 
       <ComboboxOptions anchor="bottom" transition>
         {filteredPeople.map((person) => (
-          <ComboboxOption key={person.id} value={person}>
+          <ComboboxOption<Person> key={person.id} value={person}>
             <div className="text-foreground text-sm/6">{person.name}</div>
             <CheckIcon className="fill-foreground invisible size-4 group-data-selected:visible" />
           </ComboboxOption>
