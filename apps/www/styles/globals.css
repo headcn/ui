@@ -1,7 +1,5 @@
 @import "tailwindcss";
-
 @plugin "@tailwindcss/typography";
-@plugin 'tailwind-scrollbar';
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
