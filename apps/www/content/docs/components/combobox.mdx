@@ -1,0 +1,56 @@
+---
+title: Combobox
+description: Comboboxes are the foundation of accessible autocompletes and command palettes for your app, complete with robust support for keyboard navigation.
+links:
+  doc: https://headlessui.com/react/combobox
+  api: https://headlessui.com/react/combobox#component-api
+catetory: form
+---
+
+<ComponentPreview name="combobox-demo" />
+
+## Installation
+
+<CodeBlockCommand command="headcn@latest add combobox" />
+
+## Usage
+
+Comboboxes are built using the `Combobox`, `ComboboxInput`, `ComboboxButton`, `ComboboxOptions`, and `ComboboxOption` components.
+
+You are completely in charge of how you filter the results, whether it be with a fuzzy search library client-side or by making server-side requests to an API. In this example we will keep the logic simple for demo purposes.
+
+```tsx
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxOption,
+  ComboboxOptions,
+} from "@/components/ui/combobox"
+```
+
+```tsx
+<Combobox
+  value={selected}
+  onChange={(value) => setSelected(value)}
+  onClose={() => setQuery("")}
+>
+  <div className="relative">
+    <ComboboxInput
+      displayValue={(person) => person?.name}
+      onChange={(event) => setQuery(event.target.value)}
+    />
+    <ComboboxButton>
+      <ChevronDownIcon />
+    </ComboboxButton>
+  </div>
+
+  <ComboboxOptions anchor="bottom" transition>
+    {filteredPeople.map((person) => (
+      <ComboboxOption key={person.id} value={person}>
+        <div className="text-foreground text-sm/6">{person.name}</div>
+        <CheckIcon />
+      </ComboboxOption>
+    ))}
+  </ComboboxOptions>
+</Combobox>
+```
