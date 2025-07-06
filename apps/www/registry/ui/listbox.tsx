@@ -11,7 +11,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-function Listbox(props: HeadlessListboxProps) {
+function Listbox<TType = string>(
+  props: HeadlessListboxProps<typeof HeadlessListbox, TType>
+) {
   return <HeadlessListbox {...props} />
 }
 
@@ -19,7 +21,7 @@ function ListboxButton({ className, ...props }: HeadlessListboxButtonProps) {
   return (
     <HeadlessListboxButton
       className={cn(
-        "bg-accent/50 text-accent-foreground relative flex h-9 w-full items-center rounded-md border px-3 text-left text-sm font-medium",
+        "bg-accent/50 text-accent-foreground relative flex h-9 w-full items-center justify-between rounded-md border px-3 text-left text-sm font-medium",
         "data-disabled:opacity-50",
         className
       )}
@@ -28,7 +30,10 @@ function ListboxButton({ className, ...props }: HeadlessListboxButtonProps) {
   )
 }
 
-function ListboxOption({ className, ...props }: HeadlessListboxOptionProps) {
+function ListboxOption<TType = string>({
+  className,
+  ...props
+}: HeadlessListboxOptionProps<typeof HeadlessListboxOption, TType>) {
   return (
     <HeadlessListboxOption
       className={cn(

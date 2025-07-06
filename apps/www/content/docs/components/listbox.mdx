@@ -1,0 +1,51 @@
+---
+title: Listbox
+description: Listboxes are a great foundation for building custom, accessible select menus for your app, complete with robust support for keyboard navigation.
+links:
+  doc: https://headlessui.com/react/listbox
+  api: https://headlessui.com/react/listbox#component-api
+catetory: form
+---
+
+<ComponentPreview name="listbox-demo" />
+
+## Installation
+
+<CodeBlockCommand command="headcn@latest add listbox" />
+
+## Usage
+
+Listboxes are built using the `Listbox`, `ListboxButton`, `ListboxSelectedOption`, `ListboxOptions`, and `ListboxOption` components.
+
+The `ListboxButton` will automatically open/close the `ListboxOptions` when clicked, and when the listbox is open, the list of options receives focus and is automatically navigable via the keyboard.
+
+```tsx
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@/components/ui/listbox"
+```
+
+```tsx
+<Listbox<Person>
+  value={selectedPerson}
+  onChange={(value) => value && setSelected(value.id)}
+  __demoMode
+>
+  <ListboxButton>
+    {selectedPerson?.name}
+    <ChevronDownIcon className="fill-muted-foreground group-data-hover:fill-foreground size-4" />
+  </ListboxButton>
+
+  <ListboxOptions anchor="bottom" transition>
+    {people.map((person) => (
+      <ListboxOption<Person> key={person.id} value={person}>
+        <div className="text-foreground text-sm/6">{person.name}</div>
+        <CheckIcon className="fill-foreground invisible size-4 group-data-selected:visible" />
+      </ListboxOption>
+    ))}
+  </ListboxOptions>
+</Listbox>
+```
