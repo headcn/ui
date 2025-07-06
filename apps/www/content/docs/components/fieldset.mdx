@@ -1,0 +1,30 @@
+---
+title: Fieldset
+description: Group a set of form controls together with these fully accessible but much easier-to-style versions of the native fieldset and legend elements.
+links:
+  doc: https://headlessui.com/react/fieldset
+  api: https://headlessui.com/react/fieldset#component-api
+catetory: form
+---
+
+<ComponentPreview name="fieldset-demo" />
+
+## Installation
+
+<CodeBlockCommand command="headcn@latest add fieldset" />
+
+## Usage
+
+Use the `Fieldset` and `Legend` components to group a set of form controls together with a title:
+
+```tsx
+import { Fieldset } from "@/components/ui/fieldset"
+import { Legend } from "@/components/ui/legend"
+```
+
+```tsx
+<Fieldset>
+  <Legend>Title</Legend>
+  {/* rest of the form components */}
+</Fieldset>
+```
