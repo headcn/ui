@@ -1,0 +1,35 @@
+---
+title: Radio Group
+description: Radio groups give you the same functionality as native HTML radio inputs, without any of the styling. They're perfect for building out custom UIs for selectors.
+links:
+  doc: https://headlessui.com/react/radio-group
+  api: https://headlessui.com/react/radio-group#component-api
+catetory: form
+---
+
+<ComponentPreview name="radio-group-demo" />
+
+## Installation
+
+<CodeBlockCommand command="headcn@latest add radio-group" />
+
+## Usage
+
+```tsx
+import { Field } from "@/components/ui/field"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, Radio } from "@/components/ui/radio-group"
+```
+
+```tsx
+<RadioGroup defaultValue="option-one">
+  <Field className="flex items-center space-x-2">
+    <Radio value="option-one" />
+    <Label>Option One</Label>
+  </Field>
+  <Field className="flex items-center space-x-2">
+    <Radio value="option-two" />
+    <Label>Option Two</Label>
+  </Field>
+</RadioGroup>
+```

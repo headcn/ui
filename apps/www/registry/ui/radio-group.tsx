@@ -7,7 +7,10 @@ import {
 
 import { cn } from "@/lib/utils"
 
-function Radio({ className, ...props }: HeadlessRadioProps) {
+function Radio<TType = string>({
+  className,
+  ...props
+}: HeadlessRadioProps<typeof HeadlessRadio, TType>) {
   return (
     <HeadlessRadio
       className={cn(
@@ -20,7 +23,10 @@ function Radio({ className, ...props }: HeadlessRadioProps) {
   )
 }
 
-function RadioGroup({ className, ...props }: HeadlessRadioGroupProps) {
+function RadioGroup<TType = string>({
+  className,
+  ...props
+}: HeadlessRadioGroupProps<typeof HeadlessRadioGroup, TType>) {
   return (
     <HeadlessRadioGroup className={cn("grid gap-3", className)} {...props} />
   )
