@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf node_modules",
     "dev:contentlayer": "contentlayer2 dev",
     "dev:next": "next dev --turbopack",
     "dev": "run-p dev:*",
