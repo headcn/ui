@@ -130,6 +130,9 @@ importers:
         specifier: ^4.0.13
         version: 4.0.13
     devDependencies:
+      '@repo/prettier-config':
+        specifier: workspace:*
+        version: link:../../tools/prettier-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../tools/typescript-config

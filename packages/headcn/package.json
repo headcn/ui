@@ -41,9 +41,13 @@
     "build": "tsup",
     "clean": "rm -rf node_modules dist",
     "dev": "tsup --watch",
+    "format:check": "prettier --check . --ignore-path ../../.gitignore",
+    "format:write": "prettier --write . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@repo/prettier-config",
   "devDependencies": {
+    "@repo/prettier-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^24.1.0",
     "tsup": "^8.5.0",
