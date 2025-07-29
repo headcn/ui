@@ -11,5 +11,10 @@
   "scripts": {
     "format:check": "prettier --check . --ignore-path ../../.gitignore",
     "format:write": "prettier --write . --ignore-path ../../.gitignore"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
+    "prettier-plugin-tailwindcss": "^0.6.13"
   }
 }
