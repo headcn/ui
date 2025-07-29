@@ -69,7 +69,7 @@
     scrollbar-width: unset;
   }
   html {
-    @apply scroll-smooth;
+    overflow-y: scroll @apply scroll-smooth;
   }
   body {
     font-synthesis-weight: none;
