@@ -108,6 +108,9 @@ importers:
       eslint:
         specifier: ^9
         version: 9.32.0(jiti@2.5.1)
+      headcn:
+        specifier: workspace:*
+        version: link:../../packages/headcn
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -119,6 +122,13 @@ importers:
         version: 5.8.3
 
   packages/headcn:
+    dependencies:
+      commander:
+        specifier: ^14.0.0
+        version: 14.0.0
+      zod:
+        specifier: ^4.0.13
+        version: 4.0.13
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
@@ -4053,6 +4063,9 @@ packages:
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
+  zod@4.0.13:
+    resolution: {integrity: sha512-jv+zRxuZQxTrFHzxZ46ezL2FtnE+M4HIJHJEwLsZ7UjrXHltdG6HrxvqM0twoVCWxJiYf8WqKjAcjztegpkB+Q==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -8645,5 +8658,7 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zod@3.25.76: {}
+
+  zod@4.0.13: {}
 
   zwitch@2.0.4: {}
