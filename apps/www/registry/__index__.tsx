@@ -9,7 +9,7 @@ export const Index: Record<string, any> = {
     type: "registry:ui",
     files: [
       {
-        path: "ui/button.tsx",
+        path: "registry/ui/button.tsx",
         type: "registry:ui",
       },
     ],

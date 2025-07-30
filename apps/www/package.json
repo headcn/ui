@@ -17,7 +17,7 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier registry/__index__.tsx --write"
+    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier registry/__index__.tsx registry.json --write"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {
