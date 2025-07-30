@@ -1,0 +1,12 @@
+{
+  "name": "button-demo",
+  "type": "registry:example",
+  "registryDepends": ["button"],
+  "files": [
+    {
+      "path": "registry/examples/button-demo.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\n\nexport default function ButtonDemo() {\n  return <Button>Button</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

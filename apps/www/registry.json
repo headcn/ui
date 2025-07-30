@@ -11,6 +11,17 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:example",
+      "registryDepends": ["button"],
+      "files": [
+        {
+          "path": "registry/examples/button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     }
   ]
 }

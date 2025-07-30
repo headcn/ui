@@ -26,6 +26,7 @@ async function buildRegistryIndex() {
     "${item.name}": {
       name: "${item.name}",
       type: "${item.type}",
+      registryDepends: ${JSON.stringify(item.registryDepends)},
       files: [${item.files.map(
         (f) => `{
         path: "registry/${f.path}",
@@ -41,7 +42,7 @@ async function buildRegistryIndex() {
       })`
           : "null"
       }
-    }`
+    },`
   }
   // ending brackett
   index += `
