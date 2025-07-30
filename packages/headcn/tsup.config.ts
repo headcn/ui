@@ -1,7 +1,7 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
 export default defineConfig({
-  entry: ["./src/index.ts"],
+  entry: ["./src/index.ts", "./src/registry/index.ts"],
   format: ["esm"],
   sourcemap: true,
   minify: true,
@@ -10,4 +10,4 @@ export default defineConfig({
   clean: true,
   outDir: "dist",
   treeshake: true,
-});
+})

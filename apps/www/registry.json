@@ -1,0 +1,16 @@
+{
+  "name": "headcn/ui",
+  "homepage": "https://ui.headcn.site",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
   "name": "www",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "clean": "rm -rf node_modules",
     "dev:contentlayer": "contentlayer2 dev",
@@ -14,7 +15,9 @@
     "lint": "next lint",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "registry:format": "prettier registry/__index__.tsx registry.json \"public/r/**/*.json\" --write",
+    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && pnpm registry:format"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {
@@ -23,6 +26,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "contentlayer2": "^0.5.8",
+    "headcn": "workspace:*",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-to-string": "^4.0.0",
     "mdx-bundler": "^10.1.1",
@@ -32,6 +36,7 @@
     "react-dom": "^19.0.0",
     "rehype-pretty-code": "^0.14.1",
     "rehype-slug": "^6.0.0",
+    "rimraf": "^6.0.1",
     "shiki": "^3.7.0",
     "tailwind-merge": "^3.3.1",
     "unist-util-visit": "^5.0.0"
@@ -43,13 +48,14 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/mdast": "^4.0.4",
-    "@types/node": "^24",
+    "@types/node": "^24.1.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/unist": "^3.0.3",
     "eslint": "^9",
     "npm-run-all": "^4.1.5",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }
