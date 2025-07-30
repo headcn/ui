@@ -9,7 +9,6 @@
     "dev:next": "next dev --turbopack",
     "dev": "run-p dev:*",
     "build:contentlayer": "contentlayer2 build",
-    "build:headcn": "headcn build",
     "build:next": "next build",
     "build": "run-p build:*",
     "start": "next start",
@@ -17,7 +16,7 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier registry/__index__.tsx registry.json --write"
+    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier registry/__index__.tsx registry.json \"public/r/**/*.json\" --write"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

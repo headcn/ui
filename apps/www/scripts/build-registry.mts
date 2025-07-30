@@ -1,4 +1,5 @@
 import { registry } from "@/registry/index"
+import { execFile } from "child_process"
 import fs from "fs/promises"
 import { Registry } from "headcn/registry"
 import path from "path"
@@ -79,12 +80,28 @@ async function buildRegistryJson() {
   )
 }
 
+async function buildRegistry() {
+  return new Promise((resolve, reject) => {
+    execFile(
+      "pnpm",
+      ["-F", "www", "exec", "headcn", "build"],
+      (err, stdout) => {
+        if (err) reject(err)
+        else resolve(stdout)
+      }
+    )
+  })
+}
+
 try {
   console.log("Building registry/__index__.tsx...")
   await buildRegistryIndex()
 
   console.log("Building registry.json...")
   await buildRegistryJson()
+
+  console.log("Building registry...")
+  await buildRegistry()
 } catch (err) {
   console.error(err)
   process.exit(1)
