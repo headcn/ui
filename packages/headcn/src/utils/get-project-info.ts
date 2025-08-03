@@ -62,10 +62,6 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
 export async function getProjectConfig(
   projectInfo: ProjectInfo
 ): Promise<Config | null> {
-  if (!projectInfo.twCssFile) {
-    return null
-  }
-
   return configSchema.parse({
     $schema: "https://ui.headcn.site/schema.json",
     rsc: projectInfo.isRSC,
