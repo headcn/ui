@@ -12,9 +12,8 @@ export const configSchema = z.object({
   iconLibrary: z.string().optional(),
   aliases: z.object({
     components: z.string(),
-    utils: z.string(),
     ui: z.string().optional(),
-    lib: z.string().optional(),
+    utils: z.string(),
   }),
 })
 

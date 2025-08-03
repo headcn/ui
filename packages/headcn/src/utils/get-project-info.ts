@@ -75,7 +75,6 @@ export async function getProjectConfig(
     aliases: {
       components: `${projectInfo.aliasPrefix}/components`,
       ui: `${projectInfo.aliasPrefix}/components/ui`,
-      lib: `${projectInfo.aliasPrefix}/lib`,
       utils: `${projectInfo.aliasPrefix}/lib/utils`,
     },
   })
