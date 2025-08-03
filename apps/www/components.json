@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.headcn.site/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "css": "styles/globals.css",
+    "prefix": ""
+  },
+  "iconLibrary": "@heroicons/react",
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/ui",
+    "utils": "@/lib/utils"
+  }
+}
