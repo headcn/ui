@@ -67,6 +67,7 @@ export async function getProjectConfig(
   }
 
   return configSchema.parse({
+    $schema: "https://ui.headcn.site/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
     style: "default",

@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 export const configSchema = z.object({
+  $schema: z.string().optional(),
   style: z.string(),
   rsc: z.coerce.boolean().default(true),
   tsx: z.coerce.boolean().default(true),
