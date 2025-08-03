@@ -1,5 +1,9 @@
-import { getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
+import { highlighter } from "@/src/utils/highlighter"
+import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
+import fs from "fs/promises"
+import path from "path"
 import prompts from "prompts"
 
 export const init = new Command()
@@ -7,19 +11,23 @@ export const init = new Command()
   .description("initialize your project and install dependencies")
   .action(async () => {
     const projectInfo = await getProjectInfo()
-    console.log(projectInfo)
-    // const options = promptForConfig()
-  })
+    const config = await getProjectConfig(projectInfo)
 
-async function promptForConfig() {
-  const options = await prompts([
-    {
-      type: "toggle",
-      name: "typescript",
-      message: "Would you like to use TypeScript (recommended)?",
+    const { proceed } = await prompts({
+      type: "confirm",
+      name: "proceed",
+      message: `Write configuration to ${highlighter.info(
+        "components.json"
+      )}. Proceed?`,
       initial: true,
-      active: "yes",
-      inactive: "no",
-    },
-  ])
-}
+    })
+
+    if (!proceed) {
+      process.exit(0)
+    }
+
+    const componentSpinner = spinner(`Writing components.json.`).start()
+    const targetPath = path.resolve("components.json")
+    await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf-8")
+    componentSpinner.succeed()
+  })

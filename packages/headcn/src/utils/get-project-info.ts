@@ -1,5 +1,6 @@
 import { FRAMEWORKS } from "@/src/configs/frameworks"
 import { pathExists } from "@/src/utils/fs"
+import { Config, configSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
 import fs from "fs/promises"
 import path from "path"
@@ -56,6 +57,31 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
 
   // Manual
   return projectInfo
+}
+
+export async function getProjectConfig(
+  projectInfo: ProjectInfo
+): Promise<Config | null> {
+  if (!projectInfo.twCssFile) {
+    return null
+  }
+
+  return configSchema.parse({
+    rsc: projectInfo.isRSC,
+    tsx: projectInfo.isTsx,
+    style: "default",
+    tailwind: {
+      css: projectInfo.twCssFile,
+      prefix: "",
+    },
+    iconLibrary: "@heroicons/react",
+    aliases: {
+      components: `${projectInfo.aliasPrefix}/components`,
+      ui: `${projectInfo.aliasPrefix}/components/ui`,
+      lib: `${projectInfo.aliasPrefix}/lib`,
+      utils: `${projectInfo.aliasPrefix}/lib/utils`,
+    },
+  })
 }
 
 async function isTsProject(): Promise<boolean> {
