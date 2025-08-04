@@ -2,6 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "style": {
       "type": "string",
       "enum": ["default"]
@@ -15,12 +18,8 @@
     "tailwind": {
       "type": "object",
       "properties": {
-        "css": {
-          "type": "string"
-        },
-        "prefix": {
-          "type": "string"
-        }
+        "css": { "type": "string" },
+        "prefix": { "type": "string" }
       },
       "required": ["css", "prefix"],
       "additionalProperties": false
@@ -32,15 +31,9 @@
     "aliases": {
       "type": "object",
       "properties": {
-        "components": {
-          "type": "string"
-        },
-        "ui": {
-          "type": "string"
-        },
-        "utils": {
-          "type": "string"
-        }
+        "components": { "type": "string" },
+        "ui": { "type": "string" },
+        "utils": { "type": "string" }
       },
       "required": ["components", "utils"],
       "additionalProperties": false
