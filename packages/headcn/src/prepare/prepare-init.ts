@@ -8,7 +8,6 @@ import { spinner } from "../utils/spinner"
 export async function prepareInit(): Promise<{
   projectInfo: ProjectInfo | null
 }> {
-  // check if project directory exists and not empty
   if (
     !(await pathExists(process.cwd())) ||
     !(await pathExists(path.resolve("package.json")))
@@ -43,14 +42,12 @@ export async function prepareInit(): Promise<{
   if (!projectInfo || projectInfo.framework.name === "manual") {
     frameworkSpinner.fail()
     logger.break()
-    if (projectInfo.framework.links.installation) {
-      logger.error(
-        `We could not detect a supported framework.\n` +
-          `Visit ${highlighter.info(
-            projectInfo?.framework.links.installation
-          )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
-      )
-    }
+    logger.error(
+      `We could not detect a supported framework.\n` +
+        `Visit ${highlighter.info(
+          projectInfo?.framework.links.installation
+        )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
+    )
     logger.break()
     process.exit(1)
   }
@@ -59,6 +56,42 @@ export async function prepareInit(): Promise<{
       projectInfo.framework.label
     )}.`
   )
+
+  const tailwindSpinner = spinner("Validating Tailwind CSS.")
+  if (!projectInfo.twCssFile) {
+    tailwindSpinner.fail()
+    logger.break()
+    logger.error("No Tailwind CSS configuration found.")
+    logger.error(
+      "It is likely you do not have Tailwind CSS installed or have an invalid configuration."
+    )
+    logger.error("Install Tailwind CSS then try again.")
+    logger.error(
+      `Visit ${highlighter.info(
+        projectInfo.framework.links.tailwind
+      )} to get started.`
+    )
+    logger.break()
+    process.exit(1)
+  } else {
+    tailwindSpinner.succeed()
+  }
+
+  const tsAliasSpinner = spinner("Validating TypeScript Alias.")
+  if (!projectInfo.aliasPrefix) {
+    tsAliasSpinner.fail()
+    logger.break()
+    logger.error("No import alias found in your tsconfig.json file.")
+    logger.error(
+      `Visit ${highlighter.info(
+        projectInfo?.framework.links.installation
+      )} to learn how to set an import alias.`
+    )
+    logger.break()
+    process.exit(1)
+  } else {
+    tsAliasSpinner.succeed()
+  }
 
   return {
     projectInfo,
