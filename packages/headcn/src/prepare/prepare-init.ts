@@ -1,0 +1,99 @@
+import { pathExists } from "@/src/utils/fs"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
+import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
+import path from "path"
+
+export async function prepareInit(): Promise<{
+  projectInfo: ProjectInfo | null
+}> {
+  if (
+    !(await pathExists(process.cwd())) ||
+    !(await pathExists(path.resolve("package.json")))
+  ) {
+    logger.error(
+      `Invalid project directory: either the current directory does not exist or ${highlighter.info("package.json")} is missing.\n` +
+        `Please run this command inside a valid project root.`
+    )
+    return {
+      projectInfo: null,
+    }
+  }
+
+  const preparingSpinner = spinner("Preparing init.").start()
+  if (await pathExists(path.resolve("components.json"))) {
+    preparingSpinner.fail()
+    logger.break()
+    logger.error(
+      `A ${highlighter.info(
+        "components.json"
+      )} file already exists.\nTo start over, remove the ${highlighter.info(
+        "components.json"
+      )} file and run ${highlighter.info("init")} again.`
+    )
+    logger.break()
+    process.exit(1)
+  }
+  preparingSpinner.succeed()
+
+  const frameworkSpinner = spinner("Validating framework.").start()
+  const projectInfo = await getProjectInfo()
+  if (!projectInfo || projectInfo.framework.name === "manual") {
+    frameworkSpinner.fail()
+    logger.break()
+    logger.error(
+      `We could not detect a supported framework.\n` +
+        `Visit ${highlighter.info(
+          projectInfo?.framework.links.installation
+        )} to manually configure your project.\nOnce configured, you can use the cli to add components.`
+    )
+    logger.break()
+    process.exit(1)
+  }
+  frameworkSpinner.succeed(
+    `Validating framework. Found ${highlighter.info(
+      projectInfo.framework.label
+    )}.`
+  )
+
+  const tailwindSpinner = spinner("Validating Tailwind CSS.")
+  if (!projectInfo.twCssFile) {
+    tailwindSpinner.fail()
+    logger.break()
+    logger.error("No Tailwind CSS configuration found.")
+    logger.error(
+      "It is likely you do not have Tailwind CSS installed or have an invalid configuration."
+    )
+    logger.error("Install Tailwind CSS then try again.")
+    logger.error(
+      `Visit ${highlighter.info(
+        projectInfo.framework.links.tailwind
+      )} to get started.`
+    )
+    logger.break()
+    process.exit(1)
+  } else {
+    tailwindSpinner.succeed()
+  }
+
+  const tsAliasSpinner = spinner("Validating TypeScript Alias.")
+  if (!projectInfo.aliasPrefix) {
+    tsAliasSpinner.fail()
+    logger.break()
+    logger.error("No import alias found in your tsconfig.json file.")
+    logger.error(
+      `Visit ${highlighter.info(
+        projectInfo?.framework.links.installation
+      )} to learn how to set an import alias.`
+    )
+    logger.break()
+    process.exit(1)
+  } else {
+    tsAliasSpinner.succeed()
+  }
+
+  return {
+    projectInfo,
+  }
+}
