@@ -7,6 +7,6 @@ export const inter = Inter({
 })
 
 export const boldonse = localFont({
-  src: "../assets/fonts/Boldonse-Regular.ttf",
+  src: "../public/fonts/Boldonse-Regular.ttf",
   variable: "--font-boldonse",
 })
