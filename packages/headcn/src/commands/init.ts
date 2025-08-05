@@ -1,16 +1,29 @@
-import { getProjectConfig, getProjectInfo } from "@/src/utils/get-project-info"
+import {
+  getProjectConfig,
+  getProjectInfo,
+  ProjectInfo,
+} from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import fs from "fs/promises"
 import path from "path"
 import prompts from "prompts"
+import { prepareInit } from "../prepare/prepare-init"
 
 export const init = new Command()
   .name("init")
   .description("initialize your project and install dependencies")
   .action(async () => {
-    const projectInfo = await getProjectInfo()
+    let projectInfo: ProjectInfo
+
+    const prepare = await prepareInit()
+    if (prepare.projectInfo) {
+      projectInfo = prepare.projectInfo
+    } else {
+      projectInfo = await getProjectInfo()
+    }
+
     const config = await getProjectConfig(projectInfo)
 
     const { proceed } = await prompts({
