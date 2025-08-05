@@ -1,9 +1,9 @@
+import { pathExists } from "@/src/utils/fs"
 import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
+import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
+import { spinner } from "@/src/utils/spinner"
 import path from "path"
-import { pathExists } from "../utils/fs"
-import { highlighter } from "../utils/highlighter"
-import { logger } from "../utils/logger"
-import { spinner } from "../utils/spinner"
 
 export async function prepareInit(): Promise<{
   projectInfo: ProjectInfo | null

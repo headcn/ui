@@ -1,3 +1,4 @@
+import { prepareInit } from "@/src/prepare/prepare-init"
 import {
   getProjectConfig,
   getProjectInfo,
@@ -9,7 +10,6 @@ import { Command } from "commander"
 import fs from "fs/promises"
 import path from "path"
 import prompts from "prompts"
-import { prepareInit } from "../prepare/prepare-init"
 
 export const init = new Command()
   .name("init")
