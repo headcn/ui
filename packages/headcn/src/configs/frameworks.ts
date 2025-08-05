@@ -1,4 +1,15 @@
-export const FRAMEWORKS = {
+export interface Frameworks {
+  [key: string]: {
+    name: string
+    label: string
+    links: {
+      installation: string
+      tailwind: string
+    }
+  }
+}
+
+export const FRAMEWORKS: Frameworks = {
   "next-app": {
     name: "next-app",
     label: "Next.js",

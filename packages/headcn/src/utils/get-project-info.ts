@@ -1,4 +1,4 @@
-import { FRAMEWORKS } from "@/src/configs/frameworks"
+import { Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
 import { pathExists } from "@/src/utils/fs"
 import { Config, configSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
@@ -6,10 +6,8 @@ import fs from "fs/promises"
 import path from "path"
 import { loadConfig } from "tsconfig-paths"
 
-type Framework = (typeof FRAMEWORKS)[keyof typeof FRAMEWORKS]
-
 export interface ProjectInfo {
-  framework: Framework
+  framework: Frameworks[string]
   isSrcDir: boolean
   isRSC: boolean
   isTsx: boolean
