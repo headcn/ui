@@ -4,6 +4,13 @@
 import * as React from "react"
 
 export const Index: Record<string, any> = {
+  index: {
+    name: "index",
+    type: "registry:style",
+    registryDepends: ["utils"],
+    files: [],
+    component: null,
+  },
   button: {
     name: "button",
     type: "registry:ui",
@@ -21,6 +28,26 @@ export const Index: Record<string, any> = {
           (key) =>
             typeof mod[key] === "function" || typeof mod[key] === "object"
         ) || "button"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  utils: {
+    name: "utils",
+    type: "registry:lib",
+    registryDepends: undefined,
+    files: [
+      {
+        path: "registry/lib/utils.ts",
+        type: "registry:lib",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/lib/utils.ts")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "utils"
       return { default: mod.default || mod[exportName] }
     }),
   },
