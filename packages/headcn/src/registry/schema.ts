@@ -3,6 +3,8 @@ import { z } from "zod"
 export const registryItemTypeSchema = z.enum([
   "registry:ui",
   "registry:example",
+  "registry:lib",
+  "registry:style",
 ])
 
 export const registryItemFileSchema = z.object({
@@ -14,8 +16,9 @@ export const registryItemFileSchema = z.object({
 export const registryItemSchema = z.object({
   name: z.string(),
   type: registryItemTypeSchema,
+  depends: z.array(z.string()).optional(),
   registryDepends: z.array(z.string()).optional(),
-  files: z.array(registryItemFileSchema),
+  files: z.array(registryItemFileSchema).optional(),
 })
 
 export const registrySchema = z.object({
