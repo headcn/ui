@@ -14,11 +14,11 @@ async function buildRegistryIndex() {
   export const Index: Record<string, any> = {`
   for (const item of registry.items) {
     // resolve path
-    const resolvedFiles = item.files.map((f) => `registry/${f.path}`)
+    const resolvedFiles = item.files?.map((f) => `registry/${f.path}`)
     if (!resolvedFiles) continue
 
     // main component import path
-    const componentImportPath = item.files[0].path
+    const componentImportPath = item.files?.[0]?.path
       ? `@/registry/${item.files[0].path}`
       : ""
 
@@ -27,7 +27,7 @@ async function buildRegistryIndex() {
       name: "${item.name}",
       type: "${item.type}",
       registryDepends: ${JSON.stringify(item.registryDepends)},
-      files: [${item.files.map(
+      files: [${item.files?.map(
         (f) => `{
         path: "registry/${f.path}",
         type: "${f.type}",
@@ -60,7 +60,7 @@ async function buildRegistryJson() {
   const resolvedRegistry: Registry = {
     ...registry,
     items: registry.items.map((item) => {
-      const files = item.files.map((f) => ({
+      const files = item.files?.map((f) => ({
         ...f,
         path: `registry/${f.path}`,
       }))

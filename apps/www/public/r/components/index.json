@@ -1,0 +1,7 @@
+{
+  "name": "index",
+  "type": "registry:style",
+  "depends": ["class-variance-authority", "@heroicons/react"],
+  "registryDepends": ["utils"],
+  "files": []
+}
