@@ -1,6 +1,8 @@
 import { fetchRegistry } from "@/src/registry/api"
 
-export async function addComponents(components: string[]) {
+export async function addComponents(components: string[]): Promise<{
+  deps: string[]
+}> {
   const allRegistries = await fetchRegistry(
     components.map((c) => `components/${c}.json`)
   )
@@ -17,9 +19,12 @@ export async function addComponents(components: string[]) {
     )
   }
 
-  if (registryDepsToInstall.size > 0) {
-    await addComponents([...registryDepsToInstall])
+  if (registryDepsToInstall.size) {
+    const { deps } = await addComponents([...registryDepsToInstall])
+    deps.forEach((dep) => depsToInstall.add(dep))
   }
 
-  console.log("DEPS: ", [...depsToInstall, ...registryDepsToInstall])
+  return {
+    deps: [...depsToInstall],
+  }
 }

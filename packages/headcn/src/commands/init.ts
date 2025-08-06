@@ -1,4 +1,5 @@
 import { prepareInit } from "@/src/prepare/prepare-init"
+import { installDeps } from "@/src/updaters/update-deps"
 import { addComponents } from "@/src/utils/add-components"
 import {
   getProjectConfig,
@@ -6,6 +7,7 @@ import {
   ProjectInfo,
 } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import fs from "fs/promises"
@@ -16,7 +18,19 @@ export const init = new Command()
   .name("init")
   .description("initialize your project and install dependencies")
   .action(async () => {
-    await addComponents(["index"])
+    const fetchSpinner = spinner("Fetching base components.").start()
+    const { deps } = await addComponents(["index"])
+    fetchSpinner.succeed()
+
+    const installSpinner = spinner("Installing required dependencies.").start()
+    try {
+      await installDeps(deps)
+      installSpinner.succeed()
+    } catch (err) {
+      installSpinner.fail()
+      logger.error(err)
+    }
+
     process.exit()
 
     let projectInfo: ProjectInfo
