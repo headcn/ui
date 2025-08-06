@@ -1,4 +1,5 @@
 import { prepareInit } from "@/src/prepare/prepare-init"
+import { addComponents } from "@/src/utils/add-components"
 import {
   getProjectConfig,
   getProjectInfo,
@@ -15,6 +16,9 @@ export const init = new Command()
   .name("init")
   .description("initialize your project and install dependencies")
   .action(async () => {
+    await addComponents(["index"])
+    process.exit()
+
     let projectInfo: ProjectInfo
 
     const prepare = await prepareInit()
