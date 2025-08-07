@@ -1,4 +1,3 @@
-import { installDeps } from "@/src/updaters/update-deps"
 import { addComponents } from "@/src/utils/add-components"
 import { resolveConfigPaths } from "@/src/utils/get-config"
 import {
@@ -7,7 +6,6 @@ import {
   ProjectInfo,
 } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import fs from "fs/promises"
@@ -48,17 +46,6 @@ export const init = new Command()
     await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf-8")
     componentSpinner.succeed()
 
-    const fetchSpinner = spinner("Fetching base components.").start()
     const resolvedConfig = await resolveConfigPaths(config)
-    const { deps } = await addComponents(["index"], resolvedConfig)
-    fetchSpinner.succeed()
-
-    const installSpinner = spinner("Installing required dependencies.").start()
-    try {
-      await installDeps(deps)
-      installSpinner.succeed()
-    } catch (err) {
-      installSpinner.fail()
-      logger.error(err)
-    }
+    await addComponents(["index"], resolvedConfig)
   })

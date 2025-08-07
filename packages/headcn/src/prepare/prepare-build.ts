@@ -1,4 +1,5 @@
 import { buildOptionsSchema } from "@/src/commands/build"
+import { logger } from "@/src/utils/logger"
 import fs from "fs/promises"
 import path from "path"
 import { z } from "zod"
@@ -14,7 +15,7 @@ export async function prepareBuild(
   try {
     await fs.access(resolvedPaths.registryFile)
   } catch {
-    console.error(`${resolvedPaths.registryFile} does not exist`)
+    logger.error(`${resolvedPaths.registryFile} does not exist`)
     process.exit(1)
   }
 
