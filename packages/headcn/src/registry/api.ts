@@ -17,6 +17,6 @@ export async function fetchRegistry(
   )
 }
 
-function getRegistryUrl(path: string): string {
+export function getRegistryUrl(path: string): string {
   return `${REGISTRY_URL}/${path}`
 }
