@@ -1,4 +1,5 @@
-import { fetchRegistry, type RegistryItemFile } from "@/src/registry"
+import { fetchRegistry } from "@/src/registry/api"
+import { type RegistryItemFile } from "@/src/registry/schema"
 import { pathExists } from "@/src/utils/fs"
 import { type Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
@@ -7,6 +8,7 @@ import fs from "fs/promises"
 import { type Ora } from "ora"
 import path from "path"
 import prompts from "prompts"
+import { updateThemeCss } from "./update-theme-css"
 
 // avoid duplicate writes
 const written = new Set<string>()
@@ -18,6 +20,10 @@ export async function updateFiles(
   const updatingSpinner = spinner("Updating files.").start()
 
   const result = await updateFilesInternal(components, config, updatingSpinner)
+  if (components.includes("index")) {
+    await updateThemeCss(config, updatingSpinner)
+  }
+
   updatingSpinner.succeed()
   return result
 }
