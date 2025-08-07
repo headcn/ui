@@ -1,4 +1,4 @@
-import { fetchRegistry, getRegistryUrl } from "@/src/registry/api"
+import { fetchRegistry } from "@/src/registry/api"
 import { type RegistryItemFile } from "@/src/registry/schema"
 import { pathExists } from "@/src/utils/fs"
 import { type Config } from "@/src/utils/get-config"
@@ -8,6 +8,7 @@ import fs from "fs/promises"
 import { type Ora } from "ora"
 import path from "path"
 import prompts from "prompts"
+import { updateThemeCss } from "./update-theme-css"
 
 // avoid duplicate writes
 const written = new Set<string>()
@@ -18,22 +19,13 @@ export async function updateFiles(
 ): Promise<{ deps: string[] }> {
   const updatingSpinner = spinner("Updating files.").start()
 
-  if (components.includes("index")) updateThemeCss(config)
   const result = await updateFilesInternal(components, config, updatingSpinner)
+  if (components.includes("index")) {
+    await updateThemeCss(config, updatingSpinner)
+  }
 
   updatingSpinner.succeed()
   return result
-}
-
-async function updateThemeCss(config: Config) {
-  const themeCssUrl = getRegistryUrl("theme.css")
-  const themeCssPath = config.resolvedPaths.tailwindCss
-
-  const res = await fetch(themeCssUrl)
-  const themeCssContent = await res.text()
-
-  await fs.mkdir(themeCssPath, { recursive: true })
-  await fs.writeFile(themeCssPath, themeCssContent)
 }
 
 async function updateFilesInternal(
