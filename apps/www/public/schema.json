@@ -33,9 +33,9 @@
       "properties": {
         "components": { "type": "string" },
         "ui": { "type": "string" },
-        "utils": { "type": "string" }
+        "lib": { "type": "string" }
       },
-      "required": ["components", "utils"],
+      "required": ["components", "ui", "lib"],
       "additionalProperties": false
     }
   },
