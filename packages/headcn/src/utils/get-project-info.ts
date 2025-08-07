@@ -1,6 +1,6 @@
 import { Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
 import { pathExists } from "@/src/utils/fs"
-import { Config, configSchema } from "@/src/utils/get-config"
+import { RawConfig, rawConfigSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
 import fs from "fs/promises"
 import path from "path"
@@ -59,8 +59,8 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
 
 export async function getProjectConfig(
   projectInfo: ProjectInfo
-): Promise<Config | null> {
-  return configSchema.parse({
+): Promise<RawConfig> {
+  return rawConfigSchema.parse({
     $schema: "https://ui.headcn.site/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
@@ -73,7 +73,7 @@ export async function getProjectConfig(
     aliases: {
       components: `${projectInfo.aliasPrefix}/components`,
       ui: `${projectInfo.aliasPrefix}/components/ui`,
-      utils: `${projectInfo.aliasPrefix}/lib/utils`,
+      lib: `${projectInfo.aliasPrefix}/lib`,
     },
   })
 }
