@@ -1,6 +1,10 @@
+import fs from "fs/promises"
+import path from "path"
+import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
+import { resolveTsImport } from "./resolve-ts-import"
 
-export const configSchema = z.object({
+export const rawConfigSchema = z.object({
   $schema: z.string().optional(),
   style: z.string(),
   rsc: z.coerce.boolean().default(true),
@@ -12,9 +16,56 @@ export const configSchema = z.object({
   iconLibrary: z.string().optional(),
   aliases: z.object({
     components: z.string(),
-    ui: z.string().optional(),
-    utils: z.string(),
+    ui: z.string(),
+    lib: z.string(),
   }),
 })
 
+export const configSchema = rawConfigSchema.extend({
+  resolvedPaths: z.object({
+    tailwindCss: z.string(),
+    components: z.string(),
+    ui: z.string(),
+    lib: z.string(),
+  }),
+})
+
+export type RawConfig = z.infer<typeof rawConfigSchema>
 export type Config = z.infer<typeof configSchema>
+
+export async function getConfig(): Promise<Config | null> {
+  const config = await getRawConfig()
+  if (!config) return null
+
+  return await resolveConfigPaths(config)
+}
+
+export async function resolveConfigPaths(config: RawConfig): Promise<Config> {
+  const tsconfig = loadConfig()
+  if (tsconfig.resultType === "failed") {
+    throw new Error(
+      `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}. ${tsconfig.message}`
+    )
+  }
+
+  return configSchema.parse({
+    ...config,
+    resolvedPaths: {
+      tailwindCss: path.resolve(config.tailwind.css),
+      components: await resolveTsImport(config.aliases["components"], tsconfig),
+      ui: await resolveTsImport(config.aliases["ui"], tsconfig),
+      lib: await resolveTsImport(config.aliases["lib"], tsconfig),
+    },
+  })
+}
+
+export async function getRawConfig(): Promise<RawConfig | null> {
+  try {
+    const filePath = path.resolve("components.json")
+    const content = await fs.readFile(filePath, "utf-8")
+    const parsedContent = JSON.parse(content)
+    return rawConfigSchema.parse(parsedContent)
+  } catch (err) {
+    return null
+  }
+}

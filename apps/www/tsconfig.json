@@ -11,7 +11,7 @@
       "@/*": ["./*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
-    "target": "ES2017",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "incremental": true,
     "resolveJsonModule": true

@@ -1,8 +1,9 @@
-import { prepareInit } from "@/src/prepare/prepare-init"
+import { addComponents } from "@/src/utils/add-components"
+import { resolveConfigPaths } from "@/src/utils/get-config"
 import {
   getProjectConfig,
   getProjectInfo,
-  ProjectInfo,
+  type ProjectInfo,
 } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
@@ -17,13 +18,14 @@ export const init = new Command()
   .action(async () => {
     let projectInfo: ProjectInfo
 
-    const prepare = await prepareInit()
-    if (prepare.projectInfo) {
-      projectInfo = prepare.projectInfo
-    } else {
-      projectInfo = await getProjectInfo()
-    }
+    // const prepare = await prepareInit()
+    // if (prepare.projectInfo) {
+    //   projectInfo = prepare.projectInfo
+    // } else {
+    //   projectInfo = await getProjectInfo()
+    // }
 
+    projectInfo = await getProjectInfo()
     const config = await getProjectConfig(projectInfo)
 
     const { proceed } = await prompts({
@@ -43,4 +45,7 @@ export const init = new Command()
     const targetPath = path.resolve("components.json")
     await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf-8")
     componentSpinner.succeed()
+
+    const resolvedConfig = await resolveConfigPaths(config)
+    await addComponents(["index"], resolvedConfig)
   })
