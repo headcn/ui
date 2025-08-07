@@ -1,6 +1,6 @@
-import { Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
+import { type Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
 import { pathExists } from "@/src/utils/fs"
-import { RawConfig, rawConfigSchema } from "@/src/utils/get-config"
+import { type RawConfig, rawConfigSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
 import fs from "fs/promises"
 import path from "path"

@@ -1,5 +1,5 @@
 import { prepareBuild } from "@/src/prepare/prepare-build"
-import { registryItemSchema, registrySchema } from "@/src/registry/schema"
+import { registryItemSchema, registrySchema } from "@/src/registry"
 import { Command } from "commander"
 import fs from "fs/promises"
 import path from "path"

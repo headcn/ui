@@ -3,7 +3,7 @@ import { resolveConfigPaths } from "@/src/utils/get-config"
 import {
   getProjectConfig,
   getProjectInfo,
-  ProjectInfo,
+  type ProjectInfo,
 } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"

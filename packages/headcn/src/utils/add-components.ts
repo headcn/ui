@@ -1,6 +1,6 @@
 import { updateDeps } from "@/src/updaters/update-deps"
 import { updateFiles } from "@/src/updaters/update-files"
-import { Config } from "./get-config"
+import { type Config } from "./get-config"
 
 export async function addComponents(
   components: string[],

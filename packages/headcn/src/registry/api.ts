@@ -1,5 +1,5 @@
 import { REGISTRY_URL } from "./constants"
-import { RegistryItem, registryItemSchema } from "./schema"
+import { type RegistryItem, registryItemSchema } from "./schema"
 
 export async function fetchRegistry(
   paths: string[]
