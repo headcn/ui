@@ -1,6 +1,12 @@
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
+/**
+ * Function that gracefully handles unknown errors.
+ * Handles string, zod and exception errors and exit program.
+ *
+ * @param error Unknown error instance to handle.
+ */
 export function handleError(error: unknown) {
   logger.break()
   logger.error(

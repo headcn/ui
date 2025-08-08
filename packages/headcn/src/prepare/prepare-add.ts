@@ -4,7 +4,16 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import path from "path"
 
+/**
+ * Function that should run before `add` command.
+ * Run checks like:
+ * * if the directory exists and not empty, and try to get config file.
+ *
+ * @returns A promise which resolves to config object which is nullable
+ */
 export async function prepareAdd(): Promise<{ config: Config | null }> {
+  // check if the current working directory exists
+  // and not empty by looking for a package.json file.
   if (
     !(await pathExists(process.cwd())) ||
     !(await pathExists(path.resolve("package.json")))

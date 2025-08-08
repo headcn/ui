@@ -5,6 +5,17 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import path from "path"
 
+/**
+ * Function that should run before `init` command.
+ * Run checks like:
+ * * If the current working directory is valid and not empty.
+ * * A valid `components.json` file exists.
+ * * Framework is supported.
+ * * Tailwind CSS is installed and valid.
+ * * TypeScript alias exists or not.
+ *
+ * @returns A promise which resolves to object of project information.
+ */
 export async function prepareInit(): Promise<{
   projectInfo: ProjectInfo
 }> {
