@@ -22,20 +22,20 @@ export const build = new Command()
     "output directory for build files",
     "./public/r/components"
   )
-  .action(async (registry: string, opts: unknown) => {
+  .action(async (registry: string, opts) => {
+    const options = buildOptionsSchema.parse({
+      registryFile: registry,
+      outputDir: opts.output,
+    })
+
     try {
-      await runBuild(registry, opts)
+      await runBuild(options)
     } catch (err) {
       handleError(err)
     }
   })
 
-async function runBuild(registry: string, opts: any) {
-  const options = buildOptionsSchema.parse({
-    registryFile: registry,
-    outputDir: opts.output,
-  })
-
+async function runBuild(options: z.infer<typeof buildOptionsSchema>) {
   const { resolvedPaths } = await prepareBuild(options)
   const registryContent = await fs.readFile(resolvedPaths.registryFile, "utf-8")
 
