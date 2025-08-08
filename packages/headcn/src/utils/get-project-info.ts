@@ -1,4 +1,4 @@
-import { type Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
+import { type Frameworks, FRAMEWORKS } from "@/src/utils/frameworks"
 import { pathExists } from "@/src/utils/fs"
 import { type RawConfig, rawConfigSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
@@ -23,6 +23,13 @@ const PROJECT_SHARED_IGNORE = [
   "build",
 ]
 
+/**
+ * Function that returns informations about current working project directory.
+ * Includes infos such as- is src directory, is typescript project, tailwind file location
+ * and typescript alias prefix.
+ *
+ * @returns A promise which resolves to an object that contains project information.
+ */
 export async function getProjectInfo(): Promise<ProjectInfo> {
   const [isSrcDir, isTsx, twCssFile, aliasPrefix] = await Promise.all([
     pathExists(path.resolve("src")),
@@ -40,7 +47,7 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
     aliasPrefix,
   }
 
-  // Next.js
+  // next.js
   if ((await fg.glob("next.config.*")).length) {
     const isUsingAppDir = await pathExists(
       path.resolve(`${isSrcDir ? "src/" : ""}app`)
@@ -53,10 +60,17 @@ export async function getProjectInfo(): Promise<ProjectInfo> {
     return projectInfo
   }
 
-  // Manual
+  // manual
   return projectInfo
 }
 
+/**
+ * Function that takes information about current project
+ * and returns a resolved raw configuration.
+ *
+ * @param projectInfo A `ProjectInfo` object.
+ * @returns A promise which resolves to raw configuration.
+ */
 export async function getProjectConfig(
   projectInfo: ProjectInfo
 ): Promise<RawConfig> {
@@ -78,6 +92,12 @@ export async function getProjectConfig(
   })
 }
 
+/**
+ * Function that checks if the current working directory has typescript
+ * installed and configured properly.
+ *
+ * @returns A promise which resolves to a boolean value.
+ */
 async function isTsProject(): Promise<boolean> {
   const tsconfigFiles = await fg.glob("tsconfig.*", {
     deep: 1,
@@ -87,6 +107,13 @@ async function isTsProject(): Promise<boolean> {
   return tsconfigFiles.length > 0
 }
 
+/**
+ * Function that returns the path of tailwind css file.
+ * Iterates through project files and search for css or scss files containing
+ * tailwind import references.
+ *
+ * @returns A promise which resolves to a nullable path of tailwind css file.
+ */
 async function getTwCssFile(): Promise<string | null> {
   const files = await fg.glob(["**/*.css", "**/*.scss"], {
     deep: 5,
@@ -110,6 +137,12 @@ async function getTwCssFile(): Promise<string | null> {
   return null
 }
 
+/**
+ * Function that returns a top-level typescript alias.
+ * Iterates through tsconfig file paths and returns top configured alias.
+ *
+ * @returns A promise which resolves to a nullable typescript alias.
+ */
 async function getAliasPrefix(): Promise<string | null> {
   const tsconfig = loadConfig()
 

@@ -13,6 +13,13 @@ import { updateThemeCss } from "./update-theme-css"
 // avoid duplicate writes
 const written = new Set<string>()
 
+/**
+ * Function that add/updates components, calls internal function: updateFilesInternal.
+ *
+ * @param components Name of the components to add/update.
+ * @param config Config object with resolved paths.
+ * @returns A promise which resolves to an object of dependencies to install.
+ */
 export async function updateFiles(
   components: string[],
   config: Config
@@ -28,6 +35,15 @@ export async function updateFiles(
   return result
 }
 
+/**
+ * Internal function that calls recursively to add/update nested components
+ * and dependencies as well.
+ *
+ * @param components Name of the components to add/update.
+ * @param config Config object with resolved paths.
+ * @param updatingSpinner Instance of the spinner from the parent function.
+ * @returns A promise which resolves to an object of dependencies to install.
+ */
 async function updateFilesInternal(
   components: string[],
   config: Config,
@@ -45,11 +61,13 @@ async function updateFilesInternal(
 
     if (registry.files && registry.files.length) {
       for (const file of registry.files) {
+        // no duplicate writes
         if (!file.content || written.has(file.path)) continue
 
         let filePath = resolveFilePath(file, config)
         if (!filePath) continue
 
+        // update file extension based on the config
         if (!config.tsx) {
           filePath = filePath.replace(/\.tsx?$/, (match) =>
             match === ".tsx" ? ".jsx" : ".js"
@@ -75,9 +93,10 @@ async function updateFilesInternal(
           updatingSpinner.start()
         }
 
+        // make sure component directory exists to prevent write errors
         await fs.mkdir(path.dirname(filePath), { recursive: true })
         await fs.writeFile(filePath, file.content)
-
+        // mark as written
         written.add(file.path)
       }
     }
@@ -89,12 +108,13 @@ async function updateFilesInternal(
   }
 
   if (registryDepsToInstall.size) {
+    // recursively add/update deps of nested components
     const { deps } = await updateFilesInternal(
       [...registryDepsToInstall],
       config,
       updatingSpinner
     )
-    // recursively update and add deps
+    // add nested dependencies
     deps.forEach((dep) => depsToInstall.add(dep))
   }
 
@@ -103,13 +123,29 @@ async function updateFilesInternal(
   }
 }
 
-function resolveFilePath(file: RegistryItemFile, config: Config) {
+/**
+ * Function that returns a joined path of a registry item file object.
+ * Joins target directory and common path from file.path.
+ *
+ * @param file Registry item file object.
+ * @param config Config object with resolved paths.
+ * @returns Joined path of target directory and common path from `file.path`.
+ */
+function resolveFilePath(file: RegistryItemFile, config: Config): string {
   const targetDir = resolveTargetDir(file, config)
   const resolvedFilePath = resolveNestedFilePath(file.path, targetDir)
 
   return path.join(targetDir, resolvedFilePath)
 }
 
+/**
+ * Function that returns a resolved target directory of a registry item
+ * based on its type.
+ *
+ * @param file Registry item file object.
+ * @param config Config object with resolved paths.
+ * @returns Resolved path based on the `file.type`.
+ */
 function resolveTargetDir(file: RegistryItemFile, config: Config): string {
   if (file.type === "registry:ui") {
     return config.resolvedPaths.ui
@@ -120,6 +156,15 @@ function resolveTargetDir(file: RegistryItemFile, config: Config): string {
   }
 }
 
+/**
+ * Function that returns valid base of file path.
+ * Gets common index by matching file path segments with last path of target dir
+ * and returns everything after that common segment from the file path.
+ *
+ * @param filePath File path of the registry item.
+ * @param targetDir Resolved target directory of registry item.
+ * @returns File path that matches with the target directory.
+ */
 function resolveNestedFilePath(filePath: string, targetDir: string): string {
   const filePathSegments = filePath.split("/")
 

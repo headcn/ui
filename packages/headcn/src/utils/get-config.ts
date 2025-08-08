@@ -35,13 +35,26 @@ export const configSchema = rawConfigSchema.extend({
 export type RawConfig = z.infer<typeof rawConfigSchema>
 export type Config = z.infer<typeof configSchema>
 
+/**
+ * Function to get configuration object with resolves paths.
+ * Pass raw config to resolve paths.
+ *
+ * @returns A promise which resolves to a nullable `Config` object.
+ */
 export async function getConfig(): Promise<Config | null> {
   const config = await getRawConfig()
   if (!config) return null
 
+  // merge resolved paths
   return await resolveConfigPaths(config)
 }
 
+/**
+ * Function that merges resolved paths with raw configuration.
+ *
+ * @param config Raw config which is parsed from config file.
+ * @returns A promise which resolves to `Config` object.
+ */
 export async function resolveConfigPaths(config: RawConfig): Promise<Config> {
   const tsconfig = loadConfig()
   if (tsconfig.resultType === "failed") {
@@ -61,6 +74,12 @@ export async function resolveConfigPaths(config: RawConfig): Promise<Config> {
   })
 }
 
+/**
+ * Function that returns raw configuration.
+ * Tries to read configuration file (components.json) for raw config.
+ *
+ * @returns A promise which resolves to a nullable `RawConfig` object.
+ */
 export async function getRawConfig(): Promise<RawConfig | null> {
   try {
     const filePath = path.resolve("components.json")
