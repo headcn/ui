@@ -5,6 +5,8 @@ import { Registry } from "headcn/registry"
 import path from "path"
 import { rimraf } from "rimraf"
 
+const REGISTRY_PATH = path.join(process.cwd(), "public/r")
+
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
   /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -78,6 +80,17 @@ async function buildRegistryJson() {
   await fs.writeFile(
     registryJsonPath,
     JSON.stringify(resolvedRegistry, null, 2)
+  )
+
+  // build public registry index.json
+  const registryUiItems = resolvedRegistry.items.filter((item) =>
+    ["registry:ui"].includes(item.type)
+  )
+  // clean directory
+  rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
+  await fs.writeFile(
+    path.join(REGISTRY_PATH, "index.json"),
+    JSON.stringify(registryUiItems, null, 2)
   )
 }
 

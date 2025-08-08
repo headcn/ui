@@ -1,0 +1,45 @@
+{
+  "name": "headcn/ui",
+  "homepage": "https://ui.headcn.site",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "depends": ["class-variance-authority", "@heroicons/react"],
+      "registryDepends": ["utils"],
+      "files": []
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "depends": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:example",
+      "registryDepends": ["button"],
+      "files": [
+        {
+          "path": "registry/examples/button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    }
+  ]
+}
