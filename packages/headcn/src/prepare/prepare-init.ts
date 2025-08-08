@@ -6,24 +6,22 @@ import { spinner } from "@/src/utils/spinner"
 import path from "path"
 
 export async function prepareInit(): Promise<{
-  projectInfo: ProjectInfo | null
+  projectInfo: ProjectInfo
 }> {
   if (
     !(await pathExists(process.cwd())) ||
     !(await pathExists(path.resolve("package.json")))
   ) {
+    logger.break()
     logger.error(
       `Invalid project directory: either the current directory does not exist or ${highlighter.info("package.json")} is missing.\n` +
         `Please run this command inside a valid project root.`
     )
-    return {
-      projectInfo: null,
-    }
+    logger.break()
+    process.exit(1)
   }
 
-  const preparingSpinner = spinner("Preparing init.").start()
   if (await pathExists(path.resolve("components.json"))) {
-    preparingSpinner.fail()
     logger.break()
     logger.error(
       `A ${highlighter.info(
@@ -35,7 +33,6 @@ export async function prepareInit(): Promise<{
     logger.break()
     process.exit(1)
   }
-  preparingSpinner.succeed()
 
   const frameworkSpinner = spinner("Validating framework.").start()
   const projectInfo = await getProjectInfo()

@@ -1,11 +1,7 @@
 import { prepareInit } from "@/src/prepare/prepare-init"
 import { addComponents } from "@/src/utils/add-components"
 import { resolveConfigPaths } from "@/src/utils/get-config"
-import {
-  getProjectConfig,
-  getProjectInfo,
-  ProjectInfo,
-} from "@/src/utils/get-project-info"
+import { getProjectConfig } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
@@ -20,7 +16,29 @@ export const init = new Command()
   .description("initialize your project and install dependencies")
   .action(async () => {
     try {
-      await runInit()
+      const { projectInfo } = await prepareInit()
+      const config = await getProjectConfig(projectInfo)
+
+      const { proceed } = await prompts({
+        type: "confirm",
+        name: "proceed",
+        message: `Write configuration to ${highlighter.info(
+          "components.json"
+        )}. Proceed?`,
+        initial: true,
+      })
+
+      if (!proceed) {
+        process.exit(0)
+      }
+
+      const componentSpinner = spinner(`Writing components.json.`).start()
+      const targetPath = path.resolve("components.json")
+      await fs.writeFile(targetPath, JSON.stringify(config, null, 2))
+      componentSpinner.succeed()
+
+      const resolvedConfig = await resolveConfigPaths(config)
+      await addComponents(["index"], resolvedConfig)
 
       logger.break()
       logger.log(
@@ -33,38 +51,3 @@ export const init = new Command()
       handleError(err)
     }
   })
-
-async function runInit() {
-  const projectInfo = await getProjectInfoInternal()
-  const config = await getProjectConfig(projectInfo)
-
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: `Write configuration to ${highlighter.info(
-      "components.json"
-    )}. Proceed?`,
-    initial: true,
-  })
-
-  if (!proceed) {
-    process.exit(0)
-  }
-
-  const componentSpinner = spinner(`Writing components.json.`).start()
-  const targetPath = path.resolve("components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2))
-  componentSpinner.succeed()
-
-  const resolvedConfig = await resolveConfigPaths(config)
-  await addComponents(["index"], resolvedConfig)
-}
-
-async function getProjectInfoInternal(): Promise<ProjectInfo> {
-  const prepared = await prepareInit()
-  if (prepared.projectInfo) {
-    return prepared.projectInfo
-  } else {
-    return await getProjectInfo()
-  }
-}

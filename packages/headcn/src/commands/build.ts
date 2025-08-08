@@ -29,54 +29,53 @@ export const build = new Command()
     })
 
     try {
-      await runBuild(options)
+      const { resolvedPaths } = await prepareBuild(options)
+      const registryContent = await fs.readFile(
+        resolvedPaths.registryFile,
+        "utf8"
+      )
+
+      const result = registrySchema.safeParse(JSON.parse(registryContent))
+
+      if (!result.success) {
+        logger.error(`Invalid registry file at: ${resolvedPaths.registryFile}`)
+        process.exit(1)
+      }
+
+      const buildSpinner = spinner("Building registry.")
+      for (const registryItem of result.data.items) {
+        if (!registryItem.files) continue
+
+        buildSpinner.start(`Building ${registryItem.name}.`)
+
+        for (const file of registryItem.files) {
+          file["content"] = await fs.readFile(
+            path.join(process.cwd(), file.path),
+            "utf8"
+          )
+        }
+
+        const result = registryItemSchema.safeParse(registryItem)
+        if (!result.success) {
+          logger.error(`Invalid registry item: ${registryItem.name}`)
+          continue
+        }
+
+        await fs.writeFile(
+          path.join(resolvedPaths.outputDir, `${result.data.name}.json`),
+          JSON.stringify(result.data, null, 2)
+        )
+      }
+
+      // copy registry file to public (output dir)
+      await fs.copyFile(
+        resolvedPaths.registryFile,
+        path.resolve(resolvedPaths.outputDir, "registry.json")
+      )
+
+      // bring back spinerrr
+      buildSpinner.succeed("Building registry.")
     } catch (err) {
       handleError(err)
     }
   })
-
-async function runBuild(options: z.infer<typeof buildOptionsSchema>) {
-  const { resolvedPaths } = await prepareBuild(options)
-  const registryContent = await fs.readFile(resolvedPaths.registryFile, "utf-8")
-
-  const result = registrySchema.safeParse(JSON.parse(registryContent))
-
-  if (!result.success) {
-    logger.error(`Invalid registry file at: ${resolvedPaths.registryFile}`)
-    process.exit(1)
-  }
-
-  const buildSpinner = spinner("Building registry.")
-  for (const registryItem of result.data.items) {
-    if (!registryItem.files) continue
-
-    buildSpinner.start(`Building ${registryItem.name}.`)
-
-    for (const file of registryItem.files) {
-      file["content"] = await fs.readFile(
-        path.join(process.cwd(), file.path),
-        "utf-8"
-      )
-    }
-
-    const result = registryItemSchema.safeParse(registryItem)
-    if (!result.success) {
-      logger.error(`Invalid registry item: ${registryItem.name}`)
-      continue
-    }
-
-    await fs.writeFile(
-      path.join(resolvedPaths.outputDir, `${result.data.name}.json`),
-      JSON.stringify(result.data, null, 2)
-    )
-  }
-
-  // copy registry file to public (output dir)
-  await fs.copyFile(
-    resolvedPaths.registryFile,
-    path.resolve(resolvedPaths.outputDir, "registry.json")
-  )
-
-  // bring back spinerrr
-  buildSpinner.succeed("Building registry.")
-}
