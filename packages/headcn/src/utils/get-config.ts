@@ -68,7 +68,7 @@ export async function getRawConfig(): Promise<RawConfig | null> {
       return null
     }
 
-    const content = await fs.readFile(filePath, "utf-8")
+    const content = await fs.readFile(filePath, "utf8")
     const parsedContent = JSON.parse(content)
     return rawConfigSchema.parse(parsedContent)
   } catch (err) {

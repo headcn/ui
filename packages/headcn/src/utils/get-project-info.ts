@@ -98,7 +98,7 @@ async function getTwCssFile(): Promise<string | null> {
   }
 
   for (const file of files) {
-    const content = await fs.readFile(path.resolve(file), "utf-8")
+    const content = await fs.readFile(path.resolve(file), "utf8")
     if (
       content.includes(`@import "tailwindcss"`) ||
       content.includes(`@import 'tailwindcss'`)

@@ -16,7 +16,29 @@ export const init = new Command()
   .description("initialize your project and install dependencies")
   .action(async () => {
     try {
-      await runInit()
+      const { projectInfo } = await prepareInit()
+      const config = await getProjectConfig(projectInfo)
+
+      const { proceed } = await prompts({
+        type: "confirm",
+        name: "proceed",
+        message: `Write configuration to ${highlighter.info(
+          "components.json"
+        )}. Proceed?`,
+        initial: true,
+      })
+
+      if (!proceed) {
+        process.exit(0)
+      }
+
+      const componentSpinner = spinner(`Writing components.json.`).start()
+      const targetPath = path.resolve("components.json")
+      await fs.writeFile(targetPath, JSON.stringify(config, null, 2))
+      componentSpinner.succeed()
+
+      const resolvedConfig = await resolveConfigPaths(config)
+      await addComponents(["index"], resolvedConfig)
 
       logger.break()
       logger.log(
@@ -29,29 +51,3 @@ export const init = new Command()
       handleError(err)
     }
   })
-
-async function runInit() {
-  const { projectInfo } = await prepareInit()
-  const config = await getProjectConfig(projectInfo)
-
-  const { proceed } = await prompts({
-    type: "confirm",
-    name: "proceed",
-    message: `Write configuration to ${highlighter.info(
-      "components.json"
-    )}. Proceed?`,
-    initial: true,
-  })
-
-  if (!proceed) {
-    process.exit(0)
-  }
-
-  const componentSpinner = spinner(`Writing components.json.`).start()
-  const targetPath = path.resolve("components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2))
-  componentSpinner.succeed()
-
-  const resolvedConfig = await resolveConfigPaths(config)
-  await addComponents(["index"], resolvedConfig)
-}
