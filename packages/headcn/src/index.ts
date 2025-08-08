@@ -1,4 +1,5 @@
 import packageJson from "@/package.json"
+import { add } from "@/src/commands/add"
 import { build } from "@/src/commands/build"
 import { init } from "@/src/commands/init"
 import { Command } from "commander"
@@ -14,6 +15,7 @@ async function main() {
 
   program.addCommand(build)
   program.addCommand(init)
+  program.addCommand(add)
   program.parse()
 }
 

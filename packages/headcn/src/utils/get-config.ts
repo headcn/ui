@@ -2,6 +2,8 @@ import fs from "fs/promises"
 import path from "path"
 import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
+import { pathExists } from "./fs"
+import { highlighter } from "./highlighter"
 import { resolveTsImport } from "./resolve-ts-import"
 
 export const rawConfigSchema = z.object({
@@ -62,10 +64,16 @@ export async function resolveConfigPaths(config: RawConfig): Promise<Config> {
 export async function getRawConfig(): Promise<RawConfig | null> {
   try {
     const filePath = path.resolve("components.json")
+    if (!(await pathExists(filePath))) {
+      return null
+    }
+
     const content = await fs.readFile(filePath, "utf-8")
     const parsedContent = JSON.parse(content)
     return rawConfigSchema.parse(parsedContent)
   } catch (err) {
-    return null
+    throw new Error(
+      `Invalid configuration found in ${highlighter.info("components.json")}.`
+    )
   }
 }
