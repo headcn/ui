@@ -1,4 +1,4 @@
-import { type Frameworks, FRAMEWORKS } from "@/src/configs/frameworks"
+import { type Frameworks, FRAMEWORKS } from "@/src/utils/frameworks"
 import { pathExists } from "@/src/utils/fs"
 import { type RawConfig, rawConfigSchema } from "@/src/utils/get-config"
 import fg from "fast-glob"
