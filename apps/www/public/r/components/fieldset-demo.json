@@ -1,0 +1,12 @@
+{
+  "name": "fieldset-demo",
+  "type": "registry:example",
+  "registryDepends": ["fieldset"],
+  "files": [
+    {
+      "path": "registry/examples/fieldset-demo.tsx",
+      "content": "import { Description } from \"@/registry/ui/description\"\nimport { Field } from \"@/registry/ui/field\"\nimport { Fieldset } from \"@/registry/ui/fieldset\"\nimport { Input } from \"@/registry/ui/input\"\nimport { Label } from \"@/registry/ui/label\"\nimport { Legend } from \"@/registry/ui/legend\"\nimport { Textarea } from \"@/registry/ui/textarea\"\n\nexport default function FieldsetDemo() {\n  return (\n    <Fieldset className=\"w-full max-w-100 space-y-4\">\n      <Legend>Shipping details</Legend>\n      <Field className=\"flex flex-col gap-2\">\n        <Label>Street address</Label>\n        <Input placeholder=\"Street address\" />\n      </Field>\n      <Field className=\"flex flex-col gap-1\">\n        <Label>Delivery notes</Label>\n        <Description>\n          If you have a tiger, we&apos;d like to know about it.\n        </Description>\n        <Textarea placeholder=\"Delivery notes.\" className=\"mt-2\" />\n      </Field>\n    </Fieldset>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "button-destructive",
+  "type": "registry:example",
+  "registryDepends": ["button"],
+  "files": [
+    {
+      "path": "registry/examples/button-destructive.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\n\nexport default function ButtonDestructive() {\n  return <Button variant={\"destructive\"}>Destructive</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

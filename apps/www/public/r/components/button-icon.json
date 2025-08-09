@@ -1,0 +1,12 @@
+{
+  "name": "button-icon",
+  "type": "registry:example",
+  "registryDepends": ["button"],
+  "files": [
+    {
+      "path": "registry/examples/button-icon.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\nimport { StarIcon } from \"@heroicons/react/16/solid\"\n\nexport default function ButtonIcon() {\n  return (\n    <Button variant={\"outline\"} size={\"icon-md\"}>\n      <StarIcon className=\"size-5\" />\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

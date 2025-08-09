@@ -1,0 +1,12 @@
+{
+  "name": "checkbox-demo",
+  "type": "registry:example",
+  "registryDepends": ["checkbox"],
+  "files": [
+    {
+      "path": "registry/examples/checkbox-demo.tsx",
+      "content": "import { Checkbox } from \"@/registry/ui/checkbox\"\nimport { Description } from \"@/registry/ui/description\"\nimport { Field } from \"@/registry/ui/field\"\nimport { Label } from \"@/registry/ui/label\"\n\nexport default function CheckboxDemo() {\n  return (\n    <div className=\"grid gap-4\">\n      <Field className=\"flex items-center gap-3\">\n        <Checkbox />\n        <Label>Accept terms and conditions</Label>\n      </Field>\n      <Field className=\"flex items-center gap-3\">\n        <Checkbox defaultChecked />\n        <div>\n          <Label>Accept terms and conditions</Label>\n          <Description>\n            This will give you early access to new features we&apos;re\n            developing.\n          </Description>\n        </div>\n      </Field>\n      <Field disabled className=\"flex items-center gap-3\">\n        <Checkbox />\n        <Label>Enable notifications</Label>\n      </Field>\n      <Field>\n        <Label className=\"bg-accent/25 has-[[data-checked]]:border-primary/25 has-[[data-checked]]:bg-primary/25 flex items-start gap-3 rounded-md border p-3 transition-colors\">\n          <Checkbox defaultChecked />\n          <div>\n            <Label>Enable notifications</Label>\n            <Description className=\"font-normal\">\n              You can enable or disable notifications at any time.\n            </Description>\n          </div>\n        </Label>\n      </Field>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

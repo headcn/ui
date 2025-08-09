@@ -1,0 +1,11 @@
+{
+  "name": "fieldset",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/fieldset.tsx",
+      "content": "import {\n  Fieldset as HeadlessFieldset,\n  type FieldsetProps as HeadlessFieldsetProps,\n} from \"@headlessui/react\"\n\nfunction Fieldset(props: HeadlessFieldsetProps) {\n  return <HeadlessFieldset {...props} />\n}\n\nexport { Fieldset }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

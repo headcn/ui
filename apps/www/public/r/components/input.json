@@ -1,0 +1,11 @@
+{
+  "name": "input",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/input.tsx",
+      "content": "import {\n  Input as HeadlessInput,\n  type InputProps as HeadlessInputProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, ...props }: HeadlessInputProps) {\n  return (\n    <HeadlessInput\n      className={cn(\n        \"bg-accent/50 text-accent-foreground h-9 w-full rounded-md border px-3 text-sm\",\n        \"data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

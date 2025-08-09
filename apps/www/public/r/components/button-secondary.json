@@ -1,0 +1,12 @@
+{
+  "name": "button-secondary",
+  "type": "registry:example",
+  "registryDepends": ["button"],
+  "files": [
+    {
+      "path": "registry/examples/button-secondary.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\n\nexport default function ButtonSecondary() {\n  return <Button variant={\"secondary\"}>Secondary</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

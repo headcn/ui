@@ -1,0 +1,12 @@
+{
+  "name": "input-with-label",
+  "type": "registry:example",
+  "registryDepends": ["input"],
+  "files": [
+    {
+      "path": "registry/examples/input-with-label.tsx",
+      "content": "import { Field } from \"@/registry/ui/field\"\nimport { Input } from \"@/registry/ui/input\"\nimport { Label } from \"@/registry/ui/label\"\n\nexport default function InputWithLabel() {\n  return (\n    <Field className=\"flex w-full max-w-75 flex-col gap-2\">\n      <Label>Email</Label>\n      <Input type=\"email\" placeholder=\"Email\" />\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

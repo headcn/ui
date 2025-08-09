@@ -1,0 +1,11 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/checkbox.tsx",
+      "content": "import {\n  Checkbox as HeadlessCheckbox,\n  type CheckboxProps as HeadlessCheckboxProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Checkbox({ className, ...props }: HeadlessCheckboxProps) {\n  return (\n    <HeadlessCheckbox\n      className={cn(\n        \"group bg-accent/50 grid size-4 shrink-0 place-items-center rounded border\",\n        \"data-checked:bg-primary data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <svg\n        className={cn(\n          \"stroke-primary-foreground size-[90%] translate-y-0.5 opacity-0 transition\",\n          \"group-data-checked:translate-y-0 group-data-checked:opacity-100\"\n        )}\n        viewBox=\"0 0 14 14\"\n        fill=\"none\"\n      >\n        <path\n          d=\"M3 8L6 11L11 3.5\"\n          strokeWidth={2}\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n        />\n      </svg>\n    </HeadlessCheckbox>\n  )\n}\n\nexport { Checkbox }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

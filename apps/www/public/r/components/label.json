@@ -1,0 +1,11 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/label.tsx",
+      "content": "import {\n  Label as HeadlessLabel,\n  type LabelProps as HeadlessLabelProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({ className, ...props }: HeadlessLabelProps) {\n  return (\n    <HeadlessLabel\n      className={cn(\n        \"text-foreground text-sm font-medium\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

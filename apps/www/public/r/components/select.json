@@ -1,0 +1,11 @@
+{
+  "name": "select",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/select.tsx",
+      "content": "import {\n  Select as HeadlessSelect,\n  type SelectProps as HeadlessSelectProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Select({ className, ...props }: HeadlessSelectProps) {\n  return (\n    <HeadlessSelect\n      className={cn(\n        \"bg-accent/50 text-accent-foreground h-9 appearance-none rounded-md border px-3 pr-8 text-sm font-medium\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Select }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

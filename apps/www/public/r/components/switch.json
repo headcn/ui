@@ -1,0 +1,11 @@
+{
+  "name": "switch",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/switch.tsx",
+      "content": "import {\n  Switch as HeadlessSwitch,\n  type SwitchProps as HeadlessSwitchProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Switch({ className, ...props }: HeadlessSwitchProps) {\n  return (\n    <HeadlessSwitch\n      className={cn(\n        \"group bg-accent/50 relative inline-flex h-7 w-14 shrink-0 items-center rounded-full border p-1 transition\",\n        \"data-checked:bg-primary data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <span\n        aria-hidden=\"true\"\n        className={cn(\n          \"bg-foreground pointer-events-none inline-block aspect-square h-full translate-x-0 rounded-full transition\",\n          \"group-data-checked:translate-x-7\"\n        )}\n      />\n    </HeadlessSwitch>\n  )\n}\n\nexport { Switch }\n",
+      "type": "registry:ui"
+    }
+  ]
+}
