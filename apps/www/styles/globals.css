@@ -69,13 +69,12 @@
     scrollbar-width: unset;
   }
   html {
-    overflow-y: scroll;
     @apply scroll-smooth;
   }
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground;
   }
 }
 
