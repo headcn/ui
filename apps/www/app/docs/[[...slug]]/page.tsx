@@ -59,6 +59,7 @@ export default async function DocPage({ params }: DocPageProps) {
               get started
             </span>
             <ListGetStarted slug={slug} />
+            <span className="bg-border h-px w-[calc(100%+2rem)] -translate-x-4"></span>
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
