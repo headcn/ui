@@ -1,0 +1,30 @@
+---
+title: headcn
+description: Use the headcn CLI to add components to your project.
+---
+
+## init
+
+Use the `init` command to initialize configuration and dependencies for a new project.
+
+The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
+
+<CodeBlockCommand command="headcn@latest init" />
+
+## add
+
+Use the `add` command to add components and dependencies to your project.
+
+<CodeBlockCommand command="headcn@latest add [component]" />
+
+## build
+
+Use the `build` command to generate the registry JSON files.
+
+<CodeBlockCommand command="headcn@latest build" />
+
+This command reads the `registry.json` file and generates the registry JSON files in the `public/r` directory.
+
+To customize the output directory, use the `--output` option.
+
+<CodeBlockCommand command="headcn@latest build --output ./public/registry" />
