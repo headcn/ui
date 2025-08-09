@@ -1,8 +1,58 @@
 ---
-title: Get Started
-description: Get Started
+title: Introduction
+description: headcn/ui is a collection of beautifully designed and ready to use Headless UI components - with a CLI to add them instantly. It’s inspired by shadcn/ui but embraces the Headless UI philosophy, giving you full control over markup, styles, and behavior.
 ---
 
-## Get Started
+This is not just a component library.
 
-Get Started.
+It’s a toolkit for building your own component library - one that perfectly matches your design system, accessibility needs, and development workflow.
+
+## Why?
+
+Most UI libraries work like this:
+
+You install an NPM package, import a component, and use it in your app.
+It’s fast to start with, but as soon as you need custom markup, extra accessibility tweaks, or behavior changes, you end up:
+
+- Fighting against the library’s styling system
+- Wrapping components with workarounds
+- Mixing and matching components from different sources with inconsistent APIs
+
+headcn/ui avoids these problems by giving you the actual component code - unstyled but functional, powered by Headless UI’s accessibility primitives.
+
+## Core Principles
+
+### Open Code
+
+You get the complete, editable source code for every component you install.<br/>
+That means:
+
+- **Full transparency** - See exactly how it works.
+- **Easy customization** - Change markup, behavior, or styles however you like.
+- **Future-proof** - No dependency lock-in- the components live in your project.
+
+### Composition
+
+All components follow a predictable, composable pattern - thanks to `@headlessui/react`.<br/>
+This makes them:
+
+- Consistent to use across your app
+- Easy to extend with custom logic
+- Flexible enough to integrate with other libraries
+
+### Distribution
+
+The CLI isn’t just for installing components - it’s a **component distribution system**.<br/>
+It works by:
+
+- Using a flat-file schema (`components.json`) to describe components, dependencies, and styles
+- Letting you share components across projects or teams
+- Making it easy to keep components updated
+
+### Beautiful Defaults
+
+While components are unstyled by default, `headcn/ui` ships with optional Tailwind-based theme styles (`theme.css)` you can use as a starting point.
+
+- Clean, minimal defaults for quick prototyping
+- Easy to override to match your brand
+- Works seamlessly with Tailwind’s theming system
