@@ -1,0 +1,12 @@
+{
+  "name": "listbox-demo",
+  "type": "registry:example",
+  "registryDepends": ["listbox"],
+  "files": [
+    {
+      "path": "registry/examples/listbox-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  Listbox,\n  ListboxButton,\n  ListboxOption,\n  ListboxOptions,\n} from \"@/registry/ui/listbox\"\nimport { CheckIcon, ChevronDownIcon } from \"@heroicons/react/20/solid\"\nimport { useState } from \"react\"\n\ninterface Person {\n  id: number\n  name: string\n}\n\nconst people: Person[] = [\n  { id: 1, name: \"Tom Cook\" },\n  { id: 2, name: \"Wade Cooper\" },\n  { id: 3, name: \"Tanya Fox\" },\n]\n\nexport default function ListboxDemo() {\n  const [selected, setSelected] = useState<number>(people[0].id)\n  const selectedPerson = people.find((p) => p.id === selected)\n\n  return (\n    <Listbox<Person>\n      value={selectedPerson}\n      onChange={(value) => value && setSelected(value.id)}\n      __demoMode\n    >\n      <ListboxButton className=\"max-w-75\">\n        {selectedPerson?.name}\n        <ChevronDownIcon className=\"fill-muted-foreground group-data-hover:fill-foreground size-4\" />\n      </ListboxButton>\n\n      <ListboxOptions anchor=\"bottom\" transition>\n        {people.map((person) => (\n          <ListboxOption<Person> key={person.id} value={person}>\n            <div className=\"text-foreground text-sm/6\">{person.name}</div>\n            <CheckIcon className=\"fill-foreground invisible size-4 group-data-selected:visible\" />\n          </ListboxOption>\n        ))}\n      </ListboxOptions>\n    </Listbox>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

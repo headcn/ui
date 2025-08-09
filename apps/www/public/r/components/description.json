@@ -1,0 +1,11 @@
+{
+  "name": "description",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/description.tsx",
+      "content": "import {\n  Description as HeadlessDescription,\n  type DescriptionProps as HeadlessDescriptionProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Description({ className, ...props }: HeadlessDescriptionProps) {\n  return (\n    <HeadlessDescription\n      className={cn(\n        \"text-muted-foreground text-sm\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Description }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

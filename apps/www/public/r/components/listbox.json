@@ -1,0 +1,11 @@
+{
+  "name": "listbox",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/listbox.tsx",
+      "content": "import {\n  Listbox as HeadlessListbox,\n  ListboxButton as HeadlessListboxButton,\n  ListboxOption as HeadlessListboxOption,\n  ListboxOptions as HeadlessListboxOptions,\n  type ListboxButtonProps as HeadlessListboxButtonProps,\n  type ListboxOptionProps as HeadlessListboxOptionProps,\n  type ListboxOptionsProps as HeadlessListboxOptionsProps,\n  type ListboxProps as HeadlessListboxProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Listbox<TType = string>(\n  props: HeadlessListboxProps<typeof HeadlessListbox, TType>\n) {\n  return <HeadlessListbox {...props} />\n}\n\nfunction ListboxButton({ className, ...props }: HeadlessListboxButtonProps) {\n  return (\n    <HeadlessListboxButton\n      className={cn(\n        \"bg-accent/50 text-accent-foreground relative flex h-9 w-full items-center justify-between rounded-md border px-3 text-left text-sm font-medium\",\n        \"data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction ListboxOption<TType = string>({\n  className,\n  ...props\n}: HeadlessListboxOptionProps<typeof HeadlessListboxOption, TType>) {\n  return (\n    <HeadlessListboxOption\n      className={cn(\n        \"group text-accent-foreground flex h-9 items-center justify-between gap-2 rounded-md px-3 text-sm select-none\",\n        \"data-focus:bg-accent-foreground/10 data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction ListboxOptions({ className, ...props }: HeadlessListboxOptionsProps) {\n  return (\n    <HeadlessListboxOptions\n      className={cn(\n        \"bg-accent/50 w-(--button-width) rounded-lg border p-1 transition [--anchor-gap:--spacing(2)]\",\n        \"empty:invisible focus:outline-none! data-leave:data-closed:opacity-0\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Listbox, ListboxButton, ListboxOption, ListboxOptions }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

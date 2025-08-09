@@ -1,0 +1,11 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/textarea.tsx",
+      "content": "import {\n  Textarea as HeadlessTextarea,\n  type TextareaProps as HeadlessTextareaProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: HeadlessTextareaProps) {\n  return (\n    <HeadlessTextarea\n      className={cn(\n        \"bg-accent/50 flex field-sizing-content rounded-md border px-3 py-2 text-sm\",\n        \"data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "button-with-icon",
+  "type": "registry:example",
+  "registryDepends": ["button"],
+  "files": [
+    {
+      "path": "registry/examples/button-with-icon.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\nimport { CloudArrowUpIcon } from \"@heroicons/react/16/solid\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <CloudArrowUpIcon className=\"size-5\" /> Upload\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

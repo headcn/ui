@@ -1,0 +1,12 @@
+{
+  "name": "radio-group-demo",
+  "type": "registry:example",
+  "registryDepends": ["radio-group"],
+  "files": [
+    {
+      "path": "registry/examples/radio-group-demo.tsx",
+      "content": "\"use client\"\n\nimport { Radio, RadioGroup } from \"@/registry/ui/radio-group\"\nimport { CheckCircleIcon } from \"@heroicons/react/24/solid\"\nimport { useState } from \"react\"\n\ninterface Plan {\n  name: string\n  ram: string\n  cpus: string\n}\n\nconst plans: Plan[] = [\n  { name: \"Startup\", ram: \"12GB\", cpus: \"6 CPUs\" },\n  { name: \"Business\", ram: \"16GB\", cpus: \"8 CPUs\" },\n  { name: \"Enterprise\", ram: \"32GB\", cpus: \"12 CPUs\" },\n]\n\nexport default function RadioGroupDemo() {\n  const [selected, setSelected] = useState(plans[0])\n\n  return (\n    <RadioGroup<Plan>\n      by=\"name\"\n      value={selected}\n      onChange={setSelected}\n      aria-label=\"Server size\"\n      className=\"w-full max-w-75\"\n    >\n      {plans.map((plan) => (\n        <Radio\n          key={plan.name}\n          value={plan}\n          className=\"data-checked:bg-accent flex cursor-pointer rounded-md p-3 transition\"\n        >\n          <div className=\"flex w-full items-center justify-between\">\n            <div className=\"flex flex-col gap-1\">\n              <p className=\"text-foreground text-sm font-semibold\">\n                {plan.name}\n              </p>\n              <div className=\"flex gap-1.5 text-xs\">\n                <div>{plan.ram}</div>\n                <div aria-hidden=\"true\">&middot;</div>\n                <div>{plan.cpus}</div>\n              </div>\n            </div>\n            <CheckCircleIcon className=\"size-5 opacity-0 transition group-data-checked:opacity-100\" />\n          </div>\n        </Radio>\n      ))}\n    </RadioGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

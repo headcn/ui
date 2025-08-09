@@ -1,0 +1,11 @@
+{
+  "name": "radio-group",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/radio-group.tsx",
+      "content": "import {\n  Radio as HeadlessRadio,\n  RadioGroup as HeadlessRadioGroup,\n  type RadioGroupProps as HeadlessRadioGroupProps,\n  type RadioProps as HeadlessRadioProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Radio<TType = string>({\n  className,\n  ...props\n}: HeadlessRadioProps<typeof HeadlessRadio, TType>) {\n  return (\n    <HeadlessRadio\n      className={cn(\n        \"group bg-accent/50 grid place-items-center rounded-full border p-1\",\n        \"data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction RadioGroup<TType = string>({\n  className,\n  ...props\n}: HeadlessRadioGroupProps<typeof HeadlessRadioGroup, TType>) {\n  return (\n    <HeadlessRadioGroup className={cn(\"grid gap-3\", className)} {...props} />\n  )\n}\n\nexport { Radio, RadioGroup }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

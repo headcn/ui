@@ -1,0 +1,12 @@
+{
+  "name": "textarea-with-button",
+  "type": "registry:example",
+  "registryDepends": ["textarea"],
+  "files": [
+    {
+      "path": "registry/examples/textarea-with-button.tsx",
+      "content": "import { Button } from \"@/registry/ui/button\"\nimport { Textarea } from \"@/registry/ui/textarea\"\n\nexport default function TextareaWithButton() {\n  return (\n    <div className=\"flex w-full max-w-100 flex-col gap-2\">\n      <Textarea placeholder=\"Type your message here.\" className=\"w-full\" />\n      <Button>Send message</Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

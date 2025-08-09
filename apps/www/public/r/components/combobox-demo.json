@@ -1,0 +1,12 @@
+{
+  "name": "combobox-demo",
+  "type": "registry:example",
+  "registryDepends": ["combobox"],
+  "files": [
+    {
+      "path": "registry/examples/combobox-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  Combobox,\n  ComboboxButton,\n  ComboboxInput,\n  ComboboxOption,\n  ComboboxOptions,\n} from \"@/registry/ui/combobox\"\nimport { CheckIcon, ChevronDownIcon } from \"@heroicons/react/20/solid\"\nimport { useState } from \"react\"\n\ninterface Person {\n  id: number\n  name: string\n}\n\nconst people: Person[] = [\n  { id: 1, name: \"Tom Cook\" },\n  { id: 2, name: \"Wade Cooper\" },\n  { id: 3, name: \"Tanya Fox\" },\n]\n\nexport default function ComboboxDemo() {\n  const [query, setQuery] = useState(\"\")\n  const [selected, setSelected] = useState<number>(people[0].id)\n\n  const selectedPerson = people.find((p) => p.id === selected)\n  const filteredPeople =\n    query === \"\"\n      ? people\n      : people.filter((person) => {\n          return person.name.toLowerCase().includes(query.toLowerCase())\n        })\n\n  return (\n    <Combobox<Person>\n      value={selectedPerson}\n      onChange={(value) => value && setSelected(value.id)}\n      onClose={() => setQuery(\"\")}\n      __demoMode\n    >\n      <div className=\"relative\">\n        <ComboboxInput<Person>\n          displayValue={(person) => person.name}\n          onChange={(event) => setQuery(event.target.value)}\n        />\n        <ComboboxButton>\n          <ChevronDownIcon className=\"fill-muted-foreground group-data-hover:fill-foreground size-4\" />\n        </ComboboxButton>\n      </div>\n\n      <ComboboxOptions anchor=\"bottom\" transition>\n        {filteredPeople.map((person) => (\n          <ComboboxOption<Person> key={person.id} value={person}>\n            <div className=\"text-foreground text-sm/6\">{person.name}</div>\n            <CheckIcon className=\"fill-foreground invisible size-4 group-data-selected:visible\" />\n          </ComboboxOption>\n        ))}\n      </ComboboxOptions>\n    </Combobox>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "field",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/field.tsx",
+      "content": "import {\n  Field as HeadlessField,\n  type FieldProps as HeadlessFieldProps,\n} from \"@headlessui/react\"\n\nfunction Field(props: HeadlessFieldProps) {\n  return <HeadlessField {...props} />\n}\n\nexport { Field }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

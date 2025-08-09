@@ -1,0 +1,11 @@
+{
+  "name": "legend",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/ui/legend.tsx",
+      "content": "import {\n  Legend as HeadlessLegend,\n  type LegendProps as HeadlessLegendProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Legend({ className, ...props }: HeadlessLegendProps) {\n  return (\n    <HeadlessLegend\n      className={cn(\"text-foreground font-semibold\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Legend }\n",
+      "type": "registry:ui"
+    }
+  ]
+}
