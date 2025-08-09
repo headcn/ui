@@ -1,5 +1,43 @@
+---
+title: Manual Installation
+description: Add dependencies to your project manually.
+---
+
+## Add Tailwind CSS
+
+Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
+
+[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
+
+## Add Dependencies
+
+Add the following dependencies to your project:
+
+<CodeBlockCommand command="add class-variance-authority clsx tailwind-merge @heroicons/react @headlessui/react" />
+
+## Configure Path Aliases
+
+Configure the path aliases in your `tsconfig.json` file.
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+The `@` alias is a preference. You can use other aliases if you want.
+
+## Configure Styles
+
+Add the following to your `styles/globals.css` file.
+
+```css
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
@@ -36,8 +74,6 @@
 }
 
 @theme inline {
-  --font-brand: var(--font-boldonse);
-  /* colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -63,46 +99,49 @@
   *:focus:not(:focus-visible) {
     @apply outline-none;
   }
-  * {
-    @apply border-border;
-    scrollbar-color: unset;
-    scrollbar-width: unset;
-  }
-  html {
-    @apply scroll-smooth;
-  }
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
     @apply bg-background text-foreground;
   }
 }
+```
 
-@layer components {
-  [data-rehype-pretty-code-figure] {
-    margin-block: 1rem !important;
-  }
+## Add a cn Helper
 
-  [data-line-numbers] {
-    display: grid;
-    min-width: 100%;
-    white-space: pre;
-    border: 0;
-    background: transparent;
-    padding: 0;
-    counter-reset: line;
-    box-decoration-break: clone;
-  }
+```ts
+// lib/utils.ts
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-  [data-line-numbers] [data-line]::before {
-    font-size: var(--text-sm);
-    counter-increment: line;
-    content: counter(line);
-    padding-right: calc(var(--spacing) * 4);
-    color: var(--color-muted-foreground);
-  }
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
 
-  [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-muted);
+## Create a `components.json` file
+
+Create a `components.json` file in the root of your project.
+
+```json
+{
+  "$schema": "https://ui.headcn.site/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "css": "styles/globals.css",
+    "prefix": ""
+  },
+  "iconLibrary": "@heroicons/react",
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/components/ui",
+    "lib": "@/lib"
   }
 }
+```
+
+## That's it
+
+You can now start adding components to your project.

@@ -11,7 +11,7 @@ import {
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import ListForms from "./_components/list-forms"
+import ListDocs from "./_components/list-docs"
 
 interface DocPageProps {
   params: Promise<{ slug?: string[] }>
@@ -55,9 +55,19 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="col-span-3 hidden md:block">
           <div className="sticky top-4 flex flex-col gap-4 p-4">
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              get started
+            </span>
+            <ListDocs
+              slug={slug}
+              filterFn={(doc) =>
+                doc.catetory === undefined && !doc.slug.includes("/")
+              }
+            />
+            <span className="bg-border h-px w-[calc(100%+2rem)] -translate-x-4"></span>
+            <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
-            <ListForms slug={slug} />
+            <ListDocs slug={slug} filterFn={(doc) => doc.catetory === "form"} />
           </div>
         </div>
         <div className="col-span-full p-4 md:col-span-9 xl:col-span-6">
