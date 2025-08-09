@@ -12,6 +12,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import ListForms from "./_components/list-forms"
+import ListGetStarted from "./_components/list-get-started"
 
 interface DocPageProps {
   params: Promise<{ slug?: string[] }>
@@ -54,6 +55,10 @@ export default async function DocPage({ params }: DocPageProps) {
       <div className="mx-auto grid max-w-325 grid-cols-12 gap-4">
         <div className="col-span-3 hidden md:block">
           <div className="sticky top-4 flex flex-col gap-4 p-4">
+            <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
+              get started
+            </span>
+            <ListGetStarted slug={slug} />
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
