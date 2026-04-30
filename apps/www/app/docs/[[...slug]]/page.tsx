@@ -1,6 +1,6 @@
 import { allDocs } from "@/.contentlayer/generated"
 import { Toc } from "@/components/toc"
-import { getDocFromSlug } from "@/lib/utils"
+import { getDocFromSlug } from "@/lib/docs"
 import Mdx from "@/mdx-components"
 import { Button } from "@/registry/ui/button"
 import {
