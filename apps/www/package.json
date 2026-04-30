@@ -10,7 +10,7 @@
     "dev": "run-p dev:*",
     "build:contentlayer": "contentlayer2 build",
     "build:next": "next build",
-    "build": "run-p build:*",
+    "build": "run-s build:contentlayer build:next",
     "start": "next start",
     "lint": "eslint .",
     "format:check": "prettier --check .",
