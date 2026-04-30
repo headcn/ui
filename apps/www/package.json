@@ -12,7 +12,7 @@
     "build:next": "next build",
     "build": "run-p build:*",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "typecheck": "tsc --noEmit",
