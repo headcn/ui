@@ -1,6 +1,6 @@
 ---
 title: Switch
-description: Switches are used to toggle between two states, usually representing on and off.
+description: Switches are a pleasant interface for toggling a value between two states, and offer the same semantics and keyboard navigation as native checkbox elements.
 links:
   doc: https://headlessui.com/react/switch
   api: https://headlessui.com/react/switch#component-api
@@ -17,17 +17,12 @@ catetory: form
 
 Switches are built using the `Switch` component. You can toggle your switch by clicking directly on the component, or by pressing the spacebar while it's focused.
 
-Toggling the switch calls the `onChange` function with a negated version of the `checked` value.
+```tsx
+import { Switch } from "@/components/ui/switch"
+```
 
 ```tsx
-import { useState } from "react"
-import { Switch } from "@/components/ui/switch"
-
-export default function Example() {
-  const [enabled, setEnabled] = useState(false)
-
-  return <Switch checked={enabled} onChange={setEnabled} />
-}
+<Switch />
 ```
 
 ## Examples
