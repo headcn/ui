@@ -1,0 +1,12 @@
+{
+  "name": "switch-disabled",
+  "type": "registry:example",
+  "registryDepends": ["switch"],
+  "files": [
+    {
+      "path": "registry/examples/switch-disabled.tsx",
+      "content": "import { Switch } from \"@/registry/ui/switch\"\nimport { Field } from \"@/registry/ui/field\"\nimport { Label } from \"@/registry/ui/label\"\n\nexport default function SwitchDisabled() {\n  return (\n    <Field disabled className=\"flex items-center gap-3\">\n      <Switch />\n      <Label>Airplane mode</Label>\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
