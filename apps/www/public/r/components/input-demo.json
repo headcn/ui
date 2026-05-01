@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/input-demo.tsx",
-      "content": "import { Input } from \"@/registry/ui/input\"\n\nexport default function InputDemo() {\n  return <Input type=\"email\" placeholder=\"Email\" className=\"max-w-75\" />\n}\n",
+      "content": "import { Input } from \"@/registry/ui/input\"\r\n\r\nexport default function InputDemo() {\r\n  return <Input type=\"email\" placeholder=\"Email\" className=\"max-w-75\" />\r\n}\r\n",
       "type": "registry:example"
     }
   ]

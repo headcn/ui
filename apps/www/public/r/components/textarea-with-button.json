@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/textarea-with-button.tsx",
-      "content": "import { Button } from \"@/registry/ui/button\"\nimport { Textarea } from \"@/registry/ui/textarea\"\n\nexport default function TextareaWithButton() {\n  return (\n    <div className=\"flex w-full max-w-100 flex-col gap-2\">\n      <Textarea placeholder=\"Type your message here.\" className=\"w-full\" />\n      <Button>Send message</Button>\n    </div>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/ui/button\"\r\nimport { Textarea } from \"@/registry/ui/textarea\"\r\n\r\nexport default function TextareaWithButton() {\r\n  return (\r\n    <div className=\"flex w-full max-w-100 flex-col gap-2\">\r\n      <Textarea placeholder=\"Type your message here.\" className=\"w-full\" />\r\n      <Button>Send message</Button>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

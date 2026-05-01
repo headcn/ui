@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/button-icon.tsx",
-      "content": "import { Button } from \"@/registry/ui/button\"\nimport { StarIcon } from \"@heroicons/react/16/solid\"\n\nexport default function ButtonIcon() {\n  return (\n    <Button variant={\"outline\"} size={\"icon-md\"}>\n      <StarIcon className=\"size-5\" />\n    </Button>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/ui/button\"\r\nimport { StarIcon } from \"@heroicons/react/16/solid\"\r\n\r\nexport default function ButtonIcon() {\r\n  return (\r\n    <Button variant={\"outline\"} size={\"icon-md\"}>\r\n      <StarIcon className=\"size-5\" />\r\n    </Button>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

@@ -631,6 +631,26 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "switch-demo": {
+    name: "switch-demo",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "registry/examples/switch-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/switch-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "textarea-demo": {
     name: "textarea-demo",
     type: "registry:example",

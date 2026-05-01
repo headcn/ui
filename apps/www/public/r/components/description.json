@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/ui/description.tsx",
-      "content": "import {\n  Description as HeadlessDescription,\n  type DescriptionProps as HeadlessDescriptionProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Description({ className, ...props }: HeadlessDescriptionProps) {\n  return (\n    <HeadlessDescription\n      className={cn(\n        \"text-muted-foreground text-sm\",\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Description }\n",
+      "content": "import {\r\n  Description as HeadlessDescription,\r\n  type DescriptionProps as HeadlessDescriptionProps,\r\n} from \"@headlessui/react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Description({ className, ...props }: HeadlessDescriptionProps) {\r\n  return (\r\n    <HeadlessDescription\r\n      className={cn(\r\n        \"text-muted-foreground text-sm\",\r\n        \"data-disabled:pointer-events-none data-disabled:opacity-50\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Description }\r\n",
       "type": "registry:ui"
     }
   ]

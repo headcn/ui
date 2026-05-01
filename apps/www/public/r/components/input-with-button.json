@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/input-with-button.tsx",
-      "content": "import { Button } from \"@/registry/ui/button\"\nimport { Input } from \"@/registry/ui/input\"\n\nexport default function InputWithButton() {\n  return (\n    <div className=\"flex w-full max-w-100 gap-2\">\n      <Input type=\"email\" placeholder=\"Email\" />\n      <Button type=\"submit\" variant=\"outline\">\n        Subscribe\n      </Button>\n    </div>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/ui/button\"\r\nimport { Input } from \"@/registry/ui/input\"\r\n\r\nexport default function InputWithButton() {\r\n  return (\r\n    <div className=\"flex w-full max-w-100 gap-2\">\r\n      <Input type=\"email\" placeholder=\"Email\" />\r\n      <Button type=\"submit\" variant=\"outline\">\r\n        Subscribe\r\n      </Button>\r\n    </div>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

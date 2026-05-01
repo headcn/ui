@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/input-with-label.tsx",
-      "content": "import { Field } from \"@/registry/ui/field\"\nimport { Input } from \"@/registry/ui/input\"\nimport { Label } from \"@/registry/ui/label\"\n\nexport default function InputWithLabel() {\n  return (\n    <Field className=\"flex w-full max-w-75 flex-col gap-2\">\n      <Label>Email</Label>\n      <Input type=\"email\" placeholder=\"Email\" />\n    </Field>\n  )\n}\n",
+      "content": "import { Field } from \"@/registry/ui/field\"\r\nimport { Input } from \"@/registry/ui/input\"\r\nimport { Label } from \"@/registry/ui/label\"\r\n\r\nexport default function InputWithLabel() {\r\n  return (\r\n    <Field className=\"flex w-full max-w-75 flex-col gap-2\">\r\n      <Label>Email</Label>\r\n      <Input type=\"email\" placeholder=\"Email\" />\r\n    </Field>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

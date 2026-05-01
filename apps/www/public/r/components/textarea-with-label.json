@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/textarea-with-label.tsx",
-      "content": "import { Field } from \"@/registry/ui/field\"\nimport { Label } from \"@/registry/ui/label\"\nimport { Textarea } from \"@/registry/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return (\n    <Field className=\"flex w-full max-w-75 flex-col gap-2\">\n      <Label>Your message</Label>\n      <Textarea placeholder=\"Type your message here.\" className=\"w-full\" />\n    </Field>\n  )\n}\n",
+      "content": "import { Field } from \"@/registry/ui/field\"\r\nimport { Label } from \"@/registry/ui/label\"\r\nimport { Textarea } from \"@/registry/ui/textarea\"\r\n\r\nexport default function TextareaDemo() {\r\n  return (\r\n    <Field className=\"flex w-full max-w-75 flex-col gap-2\">\r\n      <Label>Your message</Label>\r\n      <Textarea placeholder=\"Type your message here.\" className=\"w-full\" />\r\n    </Field>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

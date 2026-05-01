@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/input-disabled.tsx",
-      "content": "import { Input } from \"@/registry/ui/input\"\n\nexport default function InputDisabled() {\n  return (\n    <Input type=\"email\" placeholder=\"Email\" className=\"max-w-75\" disabled />\n  )\n}\n",
+      "content": "import { Input } from \"@/registry/ui/input\"\r\n\r\nexport default function InputDisabled() {\r\n  return (\r\n    <Input type=\"email\" placeholder=\"Email\" className=\"max-w-75\" disabled />\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]

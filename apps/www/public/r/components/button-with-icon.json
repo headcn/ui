@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "registry/examples/button-with-icon.tsx",
-      "content": "import { Button } from \"@/registry/ui/button\"\nimport { CloudArrowUpIcon } from \"@heroicons/react/16/solid\"\n\nexport default function ButtonWithIcon() {\n  return (\n    <Button>\n      <CloudArrowUpIcon className=\"size-5\" /> Upload\n    </Button>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/ui/button\"\r\nimport { CloudArrowUpIcon } from \"@heroicons/react/16/solid\"\r\n\r\nexport default function ButtonWithIcon() {\r\n  return (\r\n    <Button>\r\n      <CloudArrowUpIcon className=\"size-5\" /> Upload\r\n    </Button>\r\n  )\r\n}\r\n",
       "type": "registry:example"
     }
   ]
