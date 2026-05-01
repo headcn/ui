@@ -67,7 +67,10 @@ export default async function DocPage({ params }: DocPageProps) {
             <span className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
               forms
             </span>
-            <ListDocs slug={slug} filterFn={(doc) => doc.catetory === "form"} />
+            <ListDocs
+              slug={slug}
+              filterFn={(doc) => doc.catetory?.trim() === "form"}
+            />
           </div>
         </div>
         <div className="col-span-full p-4 md:col-span-9 xl:col-span-6">
