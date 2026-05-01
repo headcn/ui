@@ -631,6 +631,88 @@ export const Index: Record<string, any> = {
       return { default: mod.default || mod[exportName] }
     }),
   },
+  "switch-demo": {
+    name: "switch-demo",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "registry/examples/switch-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/switch-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-demo"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "switch-disabled": {
+    name: "switch-disabled",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "registry/examples/switch-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/switch-disabled.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-disabled"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "switch-with-description": {
+    name: "switch-with-description",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "registry/examples/switch-with-description.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/examples/switch-with-description.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-with-description"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
+  "switch-choice-card": {
+    name: "switch-choice-card",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "registry/examples/switch-choice-card.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/switch-choice-card.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || "switch-choice-card"
+      return { default: mod.default || mod[exportName] }
+    }),
+  },
   "textarea-demo": {
     name: "textarea-demo",
     type: "registry:example",

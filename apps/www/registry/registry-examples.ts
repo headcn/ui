@@ -178,6 +178,50 @@ export const examples: RegistryItem[] = [
     ],
   },
   {
+    name: "switch-demo",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "examples/switch-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "switch-disabled",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "examples/switch-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "switch-with-description",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "examples/switch-with-description.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "switch-choice-card",
+    type: "registry:example",
+    registryDepends: ["switch"],
+    files: [
+      {
+        path: "examples/switch-choice-card.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "textarea-demo",
     type: "registry:example",
     registryDepends: ["textarea"],

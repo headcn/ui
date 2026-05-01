@@ -1,0 +1,12 @@
+{
+  "name": "switch-with-description",
+  "type": "registry:example",
+  "registryDepends": ["switch"],
+  "files": [
+    {
+      "path": "registry/examples/switch-with-description.tsx",
+      "content": "\"use client\"\n\nimport { Switch } from \"@/registry/ui/switch\"\nimport { Description } from \"@/registry/ui/description\"\nimport { Field } from \"@/registry/ui/field\"\nimport { Label } from \"@/registry/ui/label\"\nimport { useState } from \"react\"\n\nexport default function SwitchWithDescription() {\n  const [enabled, setEnabled] = useState(false)\n\n  return (\n    <Field className=\"flex items-center gap-3\">\n      <Switch checked={enabled} onChange={setEnabled} />\n      <div>\n        <Label>Airplane mode</Label>\n        <Description>\n          Disable all network connections on this device.\n        </Description>\n      </div>\n    </Field>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

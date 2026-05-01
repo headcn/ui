@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/ui/input.tsx",
-      "content": "import {\n  Input as HeadlessInput,\n  type InputProps as HeadlessInputProps,\n} from \"@headlessui/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, ...props }: HeadlessInputProps) {\n  return (\n    <HeadlessInput\n      className={cn(\n        \"bg-accent/50 text-accent-foreground h-9 w-full rounded-md border px-3 text-sm\",\n        \"data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "content": "import {\r\n  Input as HeadlessInput,\r\n  type InputProps as HeadlessInputProps,\r\n} from \"@headlessui/react\"\r\n\r\nimport { cn } from \"@/lib/utils\"\r\n\r\nfunction Input({ className, ...props }: HeadlessInputProps) {\r\n  return (\r\n    <HeadlessInput\r\n      className={cn(\r\n        \"bg-accent/50 text-accent-foreground h-9 w-full rounded-md border px-3 text-sm\",\r\n        \"data-disabled:opacity-50\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  )\r\n}\r\n\r\nexport { Input }\r\n",
       "type": "registry:ui"
     }
   ]

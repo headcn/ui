@@ -97,8 +97,9 @@ async function buildRegistryJson() {
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
     execFile(
-      "pnpm",
+      process.platform === "win32" ? "pnpm.cmd" : "pnpm",
       ["-F", "www", "exec", "headcn", "build"],
+      { shell: process.platform === "win32" },
       (err, stdout) => {
         if (err) reject(err)
         else resolve(stdout)
